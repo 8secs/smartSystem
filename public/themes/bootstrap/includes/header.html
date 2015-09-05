@@ -1,0 +1,39 @@
+
+<nav id="navbar" role="navigation" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display-->
+    <div class="navbar-header">
+      <button type="button" data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" ui-sref="home" class="navbar-brand"><img ng-src="themes/{{config.activeTheme}}/assets/images/logo.png" alt="" width="70" class="img-brand hidden-xs"/><img ng-src="themes/{{config.activeTheme}}/assets/images/logo.png" alt="" width="60" class="img-brand visible-xs"/></a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling-->
+    <div id="navbar-collapse" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a ui-sref="home">{{ 'HOME' | translate}}</a></li>
+      </ul>
+      <ul ng-show="!isAuthenticated()" class="nav navbar-nav pull-right">
+        <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">{{currentLocale}}</a>
+          <ul role="menu" class="dropdown-menu">
+            <li ng-repeat="(key, data) in sopportedLocales"><a href="{{key}}">{{data.native}}</a></li>
+          </ul>
+        </li>
+        <li><a ui-sref="login">{{ 'LOGIN' | translate}}</a></li>
+        <li><a ui-sref="signup">{{ 'SIGN_UP' | translate}}</a></li>
+      </ul>
+      <ul ng-show="isAuthenticated()" class="nav navbar-nav pull-right">
+        <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">{{currentLocale}}</a>
+          <ul role="menu" class="dropdown-menu">
+            <li ng-repeat="locale in sopportedLocales"><a href="{{key}}">{{locale.name}}</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><img check-image="" ng-src="{{userProfile.image}}" width="24" class="navbar-image-profile"/>{{userProfile.user.displayName}}</a>
+          <ul role="menu" class="dropdown-menu">
+            <li><a ui-sref="dashboard">{{ 'DASHBOARD' | translate}}</a></li>
+            <li><a ui-sref="logout">{{ 'LOG_OUT' | translate}}</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse-->
+    <!-- /.container-->
+  </div>
+</nav>

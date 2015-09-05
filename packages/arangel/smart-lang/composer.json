@@ -1,0 +1,14 @@
+{
+    "name": "8secs/smart-lang",
+    "description": "Laravel 5 language file package extension",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andres Rangel",
+            "email": "arangeltorres@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

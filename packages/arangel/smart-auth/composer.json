@@ -1,0 +1,21 @@
+{
+    "name": "8secs/smart-auth",
+    "description": "Authorization systema for SmartSystem",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andres Rangel",
+            "email": "arangeltorres@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "tymon/jwt-auth": "0.5.*",
+        "firebase/php-jwt": "~2.0",
+        "guzzlehttp/guzzle": "5.2.0",
+        "guzzlehttp/oauth-subscriber": "0.2.0",
+        "zizaco/entrust": "dev-laravel-5",
+        "laracasts/flash": "~1.3",
+        "a6digital/laravel-default-profile-image": "^1.0"
+    }
+}
