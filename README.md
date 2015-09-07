@@ -1,1 +1,1 @@
-# smartSystem Readme file
+# SmartSystem
