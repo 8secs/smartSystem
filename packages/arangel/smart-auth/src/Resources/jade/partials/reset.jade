@@ -1,0 +1,24 @@
+.auth.container
+    .row
+        .center-form.panel
+            .panel-body
+                h2.text-center Reset Password
+                form(method='post', ng-submit='resetPassword()', name='resetForm')
+                    .form-group
+                        alert(ng-repeat='alert in alerts', type='{{alert.type}}', close='alert.close()') {{ alert.msg }}
+                    input(type='hidden', name='token', ng-model='token', value='{{token}}')
+                    .form-group.has-feedback(ng-class="{ 'has-error' : resetForm.email.$invalid && resetForm.email.$dirty }")
+                        input.form-control.input-lg(type='text', name='email', ng-model='email', placeholder='Email', required='', autofocus='')
+                        .help-block.text-danger(ng-if='resetForm.email.$dirty', ng-messages='resetForm.email.$error')
+                            div(ng-message='required') You must enter your email.
+                    .form-group.has-feedback(ng-class="{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }")
+                        input.form-control.input-lg(password-strength='', type='password', name='password', ng-model='password', placeholder='Password', required='')
+                        span.ion-key.form-control-feedback
+                        .help-block.text-danger(ng-if='signupForm.password.$dirty', ng-messages='signupForm.password.$error')
+                            div(ng-message='required') Password is required.
+                    .form-group.has-feedback(ng-class="{ 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }")
+                        input.form-control.input-lg(password-match='password', type='password', name='confirmPassword', ng-model='confirmPassword', placeholder='Confirm Password')
+                        span.ion-key.form-control-feedback
+                        .help-block.text-danger(ng-if='signupForm.confirmPassword.$dirty', ng-messages='signupForm.confirmPassword.$error')
+                            div(ng-message='compareTo') Password must match.
+                    button.btn.btn-lg.btn-block.btn-success(type='submit', ng-disabled='resetForm.$invalid') Reset Password

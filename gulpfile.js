@@ -1,5 +1,6 @@
 var elixir = require('laravel-elixir'),
     gulp   = require('gulp'),
+    less = require('gulp-less'),
     jade   = require('gulp-jade'),
     util   = require('gulp-util');
 
@@ -7,6 +8,8 @@ var elixir = require('laravel-elixir'),
 elixir.config.assetsPath = 'resources/themes/bootstrap/assets';
 var themeResources = 'resources/themes/bootstrap/';
 var public_path = 'public/themes/bootstrap/';
+
+var packages_path = 'packages/arangel/';
 
 var paths = {
     'jquery': './vendor/bower_components/jquery/',
@@ -29,6 +32,24 @@ var paths = {
 
 elixir(function(mix) {
 
+    gulp.task('auth-less', function(){
+        gulp.src(packages_path+'smart-auth/src/Resources/assets/less/**/*.less')
+            .pipe(less())
+            .pipe(gulp.dest(public_path+'assets/css'))
+    });
+
+    gulp.task('auth-jade', function(){
+        gulp.src(packages_path+'smart-auth/src/Resources/jade/**/*.jade')
+            .pipe(jade({
+                pretty: !util.env.production
+            }))
+            .pipe(gulp.dest(public_path));
+    });
+
+    gulp.task('auth-js', function(){
+
+    });
+
     gulp.task('jade', function() {
         gulp.src(themeResources+'jade/**/*.jade')
             .pipe(jade({
@@ -48,6 +69,8 @@ elixir(function(mix) {
     });
 
     mix.less('styles.less', public_path+'assets/css/styles.css')
+        .task('auth-less')
+        .task('auth-jade')
         .task('jade', themeResources+'jade/**/*.jade')
         .copy(paths.bootstrap + 'fonts/**', public_path+'assets/fonts/bootstrap')
         .task('images', elixir.config.assetsPath+'/images/**/*.{png,gif,jpg,svg}')
@@ -70,7 +93,8 @@ elixir(function(mix) {
             paths.angularCookies + 'angular-cookies.min.js',
             paths.angularSanitize + 'angular-sanitize.min.js'
         ], public_path+'assets/js/scripts.js')
-        .scripts(["app.js"], public_path+'assets/js/app.js')
+        .scripts(["app.js"
+        ], public_path+'assets/js/app.js')
         .scripts([
             "controllers/web.js"
         ], public_path+'assets/js/controllers.js')

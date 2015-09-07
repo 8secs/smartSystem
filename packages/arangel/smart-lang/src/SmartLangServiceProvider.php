@@ -29,8 +29,9 @@ class SmartLangServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['smart-lang'] = $this->app->share(function($app){
-            return new SmartLang;
+        $this->app['smart-lang'] = $this->app->share(
+            function($app){
+                return new SmartLang;
         });
     }
 

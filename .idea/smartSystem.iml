@@ -7,13 +7,14 @@
     <orderEntry type="module-library">
       <library name="PHARS">
         <CLASSES>
-          <root url="phar://$MODULE_DIR$/packages/arangel/smart-auth/vendor/firebase/php-jwt/composer.phar" />
+          <root url="phar://$MODULE_DIR$/vendor/firebase/php-jwt/composer.phar" />
         </CLASSES>
         <SOURCES>
-          <root url="phar://$MODULE_DIR$/packages/arangel/smart-auth/vendor/firebase/php-jwt/composer.phar" />
+          <root url="phar://$MODULE_DIR$/vendor/firebase/php-jwt/composer.phar" />
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="sass-stdlib" level="application" />
   </component>
 </module>
 

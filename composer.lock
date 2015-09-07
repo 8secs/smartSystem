@@ -4,97 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e9680ad76b70da91b30d51620a9cd587",
+    "hash": "31e4658bdcc96b7b6665aa5b07c8c1a4",
     "packages": [
-        {
-            "name": "anahkiasen/html-object",
-            "version": "1.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Anahkiasen/html-object.git",
-                "reference": "7890eb43636b1cd5ae7c4aab0d27c6890065c9ad"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/html-object/zipball/7890eb43636b1cd5ae7c4aab0d27c6890065c9ad",
-                "reference": "7890eb43636b1cd5ae7c4aab0d27c6890065c9ad",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "HtmlObject\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Anahkiasen",
-                    "email": "ehtnam6@gmail.com"
-                }
-            ],
-            "description": "A set of classes to create and manipulate HTML objects abstractions",
-            "time": "2015-03-04 17:12:08"
-        },
-        {
-            "name": "anahkiasen/underscore-php",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Anahkiasen/underscore-php.git",
-                "reference": "48f97b295c82d99c1fe10d8b0684c43f051b5580"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/underscore-php/zipball/48f97b295c82d99c1fe10d8b0684c43f051b5580",
-                "reference": "48f97b295c82d99c1fe10d8b0684c43f051b5580",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/inflector": "^1.0",
-                "patchwork/utf8": "^1.2",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "fabpot/php-cs-fixer": "2.0.*@dev",
-                "phpunit/phpunit": "^4.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Underscore\\": [
-                        "src",
-                        "tests"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Maxime Fabre",
-                    "email": "ehtnam6@gmail.com"
-                }
-            ],
-            "description": "A redacted port of Underscore.js for PHP",
-            "keywords": [
-                "internals",
-                "laravel",
-                "toolkit"
-            ],
-            "time": "2015-05-16 19:24:58"
-        },
         {
             "name": "caffeinated/modules",
             "version": "v2.1.7",
@@ -413,6 +324,170 @@
             "time": "2014-12-20 21:24:13"
         },
         {
+            "name": "firebase/php-jwt",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "e0a75bfb6413f22092c99b70f310ccb2cca3efa5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/e0a75bfb6413f22092c99b70f310ccb2cca3efa5",
+                "reference": "e0a75bfb6413f22092c99b70f310ccb2cca3efa5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "Authentication/",
+                    "Exceptions/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "time": "2015-06-22 23:26:39"
+        },
+        {
+            "name": "guzzlehttp/psr7",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/psr7.git",
+                "reference": "4ef919b0cf3b1989523138b60163bbcb7ba1ff7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/4ef919b0cf3b1989523138b60163bbcb7ba1ff7e",
+                "reference": "4ef919b0cf3b1989523138b60163bbcb7ba1ff7e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "psr/http-message": "~1.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "PSR-7 message implementation",
+            "keywords": [
+                "http",
+                "message",
+                "stream",
+                "uri"
+            ],
+            "time": "2015-08-15 19:32:36"
+        },
+        {
+            "name": "intervention/image",
+            "version": "2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/image.git",
+                "reference": "1124ff3c6298f0dcf9edf9156623904d7a5c3428"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/1124ff3c6298f0dcf9edf9156623904d7a5c3428",
+                "reference": "1124ff3c6298f0dcf9edf9156623904d7a5c3428",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "guzzlehttp/psr7": "~1.1",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.2",
+                "phpunit/phpunit": "3.*"
+            },
+            "suggest": {
+                "ext-gd": "to use GD library based image processing.",
+                "ext-imagick": "to use Imagick based image processing.",
+                "intervention/imagecache": "Caching extension for the Intervention Image library"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\Image\\": "src/Intervention/Image"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@olivervogel.net",
+                    "homepage": "http://olivervogel.net/"
+                }
+            ],
+            "description": "Image handling and manipulation library with support for Laravel integration",
+            "homepage": "http://image.intervention.io/",
+            "keywords": [
+                "gd",
+                "image",
+                "imagick",
+                "laravel",
+                "thumbnail",
+                "watermark"
+            ],
+            "time": "2015-08-16 15:31:59"
+        },
+        {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
             "source": {
@@ -558,6 +633,49 @@
             "time": "2015-03-11 20:06:43"
         },
         {
+            "name": "laracasts/flash",
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/flash.git",
+                "reference": "a2e237ae34fcc73c4b0755fe51d1ac2063be781e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/flash/zipball/a2e237ae34fcc73c4b0755fe51d1ac2063be781e",
+                "reference": "a2e237ae34fcc73c4b0755fe51d1ac2063be781e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Laracasts\\Flash": "src/"
+                },
+                "files": [
+                    "src/Laracasts/Flash/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                }
+            ],
+            "description": "Easy flash notifications",
+            "time": "2015-02-01 20:07:15"
+        },
+        {
             "name": "laracasts/presenter",
             "version": "dev-master",
             "source": {
@@ -605,16 +723,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.1.15",
+            "version": "v5.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "231b5ee6d8439edb5f7d45da00fd31d915bdf6f0"
+                "reference": "e34dcc0c57e0f560248aec5128161256ff8bf4e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/231b5ee6d8439edb5f7d45da00fd31d915bdf6f0",
-                "reference": "231b5ee6d8439edb5f7d45da00fd31d915bdf6f0",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/e34dcc0c57e0f560248aec5128161256ff8bf4e1",
+                "reference": "e34dcc0c57e0f560248aec5128161256ff8bf4e1",
                 "shasum": ""
             },
             "require": {
@@ -729,20 +847,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-09-03 16:00:33"
+            "time": "2015-09-04 12:46:14"
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "c16222fdc02467eaa12cb6d6d0e65527741f6040"
+                "reference": "7323424a9d39c24e597ed3f2144419dfbb52e086"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/c16222fdc02467eaa12cb6d6d0e65527741f6040",
-                "reference": "c16222fdc02467eaa12cb6d6d0e65527741f6040",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/7323424a9d39c24e597ed3f2144419dfbb52e086",
+                "reference": "7323424a9d39c24e597ed3f2144419dfbb52e086",
                 "shasum": ""
             },
             "require": {
@@ -810,7 +928,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-07-28 20:41:58"
+            "time": "2015-09-05 12:06:41"
         },
         {
             "name": "mcamara/laravel-localization",
@@ -981,6 +1099,56 @@
             "time": "2015-01-11 23:07:46"
         },
         {
+            "name": "namshi/jose",
+            "version": "5.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/namshi/jose.git",
+                "reference": "8c7eba486f74c014ea1d8faedafe5109a31ea95b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/namshi/jose/zipball/8c7eba486f74c014ea1d8faedafe5109a31ea95b",
+                "reference": "8c7eba486f74c014ea1d8faedafe5109a31ea95b",
+                "shasum": ""
+            },
+            "require": {
+                "lib-openssl": "*",
+                "php": ">=5.3.3",
+                "phpseclib/phpseclib": "~0.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.5",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Namshi\\JOSE": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alessandro Nadalin",
+                    "email": "alessandro.nadalin@gmail.com"
+                }
+            ],
+            "description": "JSON Object Signing and Encryption library for PHP.",
+            "keywords": [
+                "JSON Web Signature",
+                "JSON Web Token",
+                "JWS",
+                "json",
+                "jwt",
+                "token"
+            ],
+            "time": "2015-06-29 05:41:44"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "1.20.0",
             "source": {
@@ -1073,63 +1241,151 @@
             "time": "2015-07-14 17:31:05"
         },
         {
-            "name": "patchwork/utf8",
-            "version": "v1.2.3",
+            "name": "phpseclib/phpseclib",
+            "version": "0.3.10",
             "source": {
                 "type": "git",
-                "url": "https://github.com/tchwork/utf8.git",
-                "reference": "a7a9a987d01d052ff9c99510ecbd07ebc6c270f2"
+                "url": "https://github.com/phpseclib/phpseclib.git",
+                "reference": "d15bba1edcc7c89e09cc74c5d961317a8b947bf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchwork/utf8/zipball/a7a9a987d01d052ff9c99510ecbd07ebc6c270f2",
-                "reference": "a7a9a987d01d052ff9c99510ecbd07ebc6c270f2",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/d15bba1edcc7c89e09cc74c5d961317a8b947bf4",
+                "reference": "d15bba1edcc7c89e09cc74c5d961317a8b947bf4",
                 "shasum": ""
             },
             "require": {
-                "lib-pcre": ">=7.3",
-                "php": ">=5.3.0"
+                "php": ">=5.0.0"
+            },
+            "require-dev": {
+                "phing/phing": "~2.7",
+                "phpunit/phpunit": "~4.0",
+                "sami/sami": "~2.0",
+                "squizlabs/php_codesniffer": "~1.5"
             },
             "suggest": {
-                "ext-iconv": "Use iconv for best performance",
-                "ext-intl": "Use Intl for best performance",
-                "ext-mbstring": "Use Mbstring for best performance",
-                "ext-wfio": "Use WFIO for UTF-8 filesystem access on Windows"
+                "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
+                "ext-mcrypt": "Install the Mcrypt extension in order to speed up a wide variety of cryptographic operations.",
+                "pear-pear/PHP_Compat": "Install PHP_Compat to get phpseclib working on PHP < 4.3.3."
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "0.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Crypt": "phpseclib/",
+                    "File": "phpseclib/",
+                    "Math": "phpseclib/",
+                    "Net": "phpseclib/",
+                    "System": "phpseclib/"
+                },
+                "files": [
+                    "phpseclib/Crypt/Random.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "phpseclib/"
+            ],
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Wigginton",
+                    "email": "terrafrost@php.net",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Patrick Monnerat",
+                    "email": "pm@datasphere.ch",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Andreas Fischer",
+                    "email": "bantu@phpbb.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Hans-Jürgen Petrich",
+                    "email": "petrich@tronic-media.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.",
+            "homepage": "http://phpseclib.sourceforge.net",
+            "keywords": [
+                "BigInteger",
+                "aes",
+                "asn.1",
+                "asn1",
+                "blowfish",
+                "crypto",
+                "cryptography",
+                "encryption",
+                "rsa",
+                "security",
+                "sftp",
+                "signature",
+                "signing",
+                "ssh",
+                "twofish",
+                "x.509",
+                "x509"
+            ],
+            "time": "2015-01-28 21:50:33"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
+                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Patchwork\\": "src/Patchwork/"
-                },
-                "classmap": [
-                    "src/Normalizer.php"
-                ]
+                    "Psr\\Http\\Message\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "(Apache-2.0 or GPL-2.0)"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
                 }
             ],
-            "description": "Portable and performant UTF-8, Unicode and Grapheme Clusters for PHP",
-            "homepage": "https://github.com/tchwork/utf8",
+            "description": "Common interface for HTTP messages",
             "keywords": [
-                "grapheme",
-                "i18n",
-                "unicode",
-                "utf-8",
-                "utf8"
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
             ],
-            "time": "2015-06-25 08:17:49"
+            "time": "2015-05-04 20:22:00"
         },
         {
             "name": "psr/log",
@@ -1998,35 +2254,42 @@
             "time": "2015-07-28 15:18:12"
         },
         {
-            "name": "vespakoen/menu",
-            "version": "3.0.1",
+            "name": "tymon/jwt-auth",
+            "version": "0.5.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/vespakoen/menu.git",
-                "reference": "e2b2c57bca1fa8132c51c906c701103bfa5c03cd"
+                "url": "https://github.com/tymondesigns/jwt-auth.git",
+                "reference": "fccf3f42742c21f8d0a132025e8d999308792ad9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vespakoen/menu/zipball/e2b2c57bca1fa8132c51c906c701103bfa5c03cd",
-                "reference": "e2b2c57bca1fa8132c51c906c701103bfa5c03cd",
+                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/fccf3f42742c21f8d0a132025e8d999308792ad9",
+                "reference": "fccf3f42742c21f8d0a132025e8d999308792ad9",
                 "shasum": ""
             },
             "require": {
-                "anahkiasen/html-object": "~1.4",
-                "anahkiasen/underscore-php": "^2.0",
-                "illuminate/config": "5.*",
-                "illuminate/container": "5.*",
-                "illuminate/http": "5.*",
+                "illuminate/http": "~5.0",
+                "illuminate/support": "~5.0",
+                "namshi/jose": "5.0.*",
+                "nesbot/carbon": "~1.0",
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "orchestra/testbench": "3.0.*",
-                "phpunit/phpunit": "4.0"
+                "illuminate/auth": "~5.0",
+                "illuminate/console": "~5.0",
+                "illuminate/database": "~5.0",
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "4.*"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.5-dev"
+                }
+            },
             "autoload": {
-                "psr-0": {
-                    "Menu": "src"
+                "psr-4": {
+                    "Tymon\\JWTAuth\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2035,17 +2298,23 @@
             ],
             "authors": [
                 {
-                    "name": "Koen Schmeets",
-                    "email": "hello@koenschmeets.nl"
+                    "name": "Sean Tymon",
+                    "email": "tymon148@gmail.com",
+                    "homepage": "http://tymondesigns.com",
+                    "role": "Developer"
                 }
             ],
-            "description": "Managing menus the easy way.",
+            "description": "JSON Web Token Authentication for Laravel 4 and 5",
+            "homepage": "https://github.com/tymondesigns/jwt-auth",
             "keywords": [
+                "Authentication",
+                "JSON Web Token",
+                "auth",
+                "jwt",
                 "laravel",
-                "laravel 5",
-                "menu"
+                "tymon"
             ],
-            "time": "2015-06-08 12:22:47"
+            "time": "2015-06-23 22:34:08"
         },
         {
             "name": "vinkla/translator",
@@ -2192,6 +2461,73 @@
             ],
             "description": "Composer plugin to merge multiple composer.json files",
             "time": "2015-07-03 03:24:58"
+        },
+        {
+            "name": "zizaco/entrust",
+            "version": "dev-laravel-5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Zizaco/entrust.git",
+                "reference": "3a768eb52300ec4efe9d6a6685b9bf0db6a50ffd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/3a768eb52300ec4efe9d6a6685b9bf0db6a50ffd",
+                "reference": "3a768eb52300ec4efe9d6a6685b9bf0db6a50ffd",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "illuminate/database": "~5.0",
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "~4.1",
+                "sami/sami": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/commands"
+                ],
+                "psr-4": {
+                    "Zizaco\\Entrust\\": "src/Entrust/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Elkins",
+                    "homepage": "http://andrewelkins.com"
+                },
+                {
+                    "name": "Zizaco Zizuini",
+                    "email": "zizaco@gmail.com"
+                },
+                {
+                    "name": "Ben Batschelet",
+                    "homepage": "http://github.com/bbatsche"
+                },
+                {
+                    "name": "Michele Angioni",
+                    "email": "michele.angioni@gmail.com"
+                }
+            ],
+            "description": "This package provides a flexible way to add Role-based Permissions to Laravel",
+            "keywords": [
+                "acl",
+                "auth",
+                "illuminate",
+                "laravel",
+                "permission",
+                "roles"
+            ],
+            "time": "2015-07-09 16:32:53"
         }
     ],
     "packages-dev": [
@@ -3425,8 +3761,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "laracasts/presenter": 20,
-        "laravel/framework": 0,
-        "vespakoen/menu": 0
+        "zizaco/entrust": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

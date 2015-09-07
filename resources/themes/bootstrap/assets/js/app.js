@@ -8,7 +8,8 @@
             'ngAnimate',
             'pascalprecht.translate',
             'ngCookies',
-            'ngSanitize'
+            'ngSanitize',
+            'auth'
         ])
         .run(function($rootScope){
             $rootScope.config = _config;

@@ -144,6 +144,10 @@ return [
         Caffeinated\Modules\ModulesServiceProvider::class,
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         Vinkla\Translator\TranslatorServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
 
         /*
          *  Customs Service Providers
@@ -211,6 +215,10 @@ return [
         'Theme' => Caffeinated\Themes\Facades\Theme::class,
         'Module' => Caffeinated\Modules\Facades\Module::class,
         'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+        'Image'     => Intervention\Image\Facades\Image::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
     ],
 
 ];
