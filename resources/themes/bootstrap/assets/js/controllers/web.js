@@ -2,10 +2,21 @@
     'use strict';
 
     angular.module('smartsys')
-        .controller('WebCtrl', function($rootScope, $state, $stateParams, $scope, $log, $translate, GlobalService, alertService){
+        .controller('WebCtrl', function($rootScope,
+                                        $state,
+                                        $stateParams,
+                                        $scope,
+                                        $log,
+                                        $translate,
+                                        GlobalService,
+                                        alertService){
 
             $rootScope.stylesheets = [
-                {href: 'themes/'+$rootScope.config.activeTheme+'/assets/css/styles.css', type: 'text/css'}
+                {href: 'themes/'+$rootScope.config.activeTheme+'/assets/css/styles.css', type: 'text/css'},
+                /*
+                *   TODO: ver como podemos cargar desde auth sus propios CSS
+                 */
+                {href: 'themes/'+$rootScope.config.activeTheme+'/assets/css/auth.css', type: 'text/css'}
             ];
 
             $scope.userProfile = null;
@@ -35,8 +46,6 @@
                         alertService.add('error', error);
                     });
             };
-
             $scope.getSopportedLocales();
-
         });
 })();

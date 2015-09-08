@@ -1,0 +1,29 @@
+
+<div class="auth container">
+  <div class="row">
+    <div class="panel text-center">
+      <div class="panel-body">
+        <h2 class="text-center">{{ 'LOGIN' | translate }}</h2>
+        <form method="post" ng-submit="login()" name="loginForm">
+          <div class="form-group">
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="text" name="email" ng-model="email" placeholder="{{&quot;EMAIL&quot; | translate }}" required="" autofocus="" class="form-control input-lg"/><span class="ion-at form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="password" name="password" ng-model="password" placeholder="{{&quot;PASSWORD&quot; | translate }}" required="" class="form-control input-lg"/><span class="ion-key form-control-feedback"></span>
+          </div>
+          <button type="submit" ng-disabled="loginForm.$invalid" class="btn btn-lg btn-block btn-success">{{ 'LOGIN' | translate }}</button><br/>
+          <p class="text-center"><a href="#" ui-sref="password">{{ 'FORGOT_PASS' | translate }}</a></p>
+          <p class="text-center text-muted"><small>{{ 'DONT_ACCOUNT' | translate }}<a href="/#/signup">{{ 'SIGN_UP' | translate }}</a></small></p>
+          <div class="signup-or-separator">
+            <h6 class="text">{{ 'OR' | translate }}</h6>
+            <hr/>
+          </div>
+        </form>
+        <button ng-click="authenticate('facebook')" class="btn btn-block btn-facebook"><i class="ion-social-facebook"></i> {{ 'SIGN_FACEBOOK' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

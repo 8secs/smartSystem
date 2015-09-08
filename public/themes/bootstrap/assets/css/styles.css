@@ -8730,5 +8730,8 @@ button.close {
 .navbar-brand > img {
   margin-top: -7px;
 }
+footer {
+  margin-top: 30px;
+}
 
 /*# sourceMappingURL=styles.css.map */

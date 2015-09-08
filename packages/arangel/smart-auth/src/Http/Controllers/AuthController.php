@@ -53,7 +53,7 @@ class AuthController extends Controller{
         $user = User::find($request['user']['sub']);
         if (!$user)
         {
-            return response()->json(['message' => 'User not found']);
+            return response()->json(['message' => trans('smart-lang::auth.error.user')]);
         }
         $user->$provider = '';
         $user->save();
@@ -71,7 +71,7 @@ class AuthController extends Controller{
 
         if (!$user)
         {
-            return response()->json(['message' => 'Wrong email and/or password'], 401);
+            return response()->json(['message' => trans('smart-lang::auth.error.user')], 401);
         }
         if (Hash::check($password, $user->password))
         {
@@ -80,7 +80,7 @@ class AuthController extends Controller{
         }
         else
         {
-            return response()->json(['message' => 'Wrong email and/or password'], 401);
+            return response()->json(['message' => trans('smart-lang::auth.error.wrong_email_password')], 401);
         }
     }
     /**

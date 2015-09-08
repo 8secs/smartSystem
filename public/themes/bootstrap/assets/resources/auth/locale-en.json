@@ -1,0 +1,21 @@
+{
+    "LOGIN" : "Login",
+    "SIGN_UP" : "Sign up",
+    "LOG_OUT" : "Logout",
+    "DASHBOARD" : "Dashboard",
+    "FORGOT_PASS" : "Forgot your password?",
+    "DONT_ACCOUNT" : "Don't have an account yet? ",
+    "SIGN_FACEBOOK" : "Sign in with Facebook",
+    "NAME" : "Name",
+    "EMAIL" : "Email",
+    "PASSWORD" : "Password",
+    "CONFIRM_PASSWORD" : "Confirm Password",
+    "BY_CLICK_TERMS" : "By clicking on Sign up, you agree to ",
+    "TERMS_CONDITIONS" : "terms & conditions ",
+    "AND" : " and ",
+    "PRIVACY_POLICY" : "privacy policy ",
+    "ALLREADY_HAVE" : " Already have an account? ",
+    "LOGIN_NOW" : "Log in now",
+    "RESET_PASSWORD" : "Reset Password",
+    "SEND_PASSWORD_LINK" : "Send Password Reset Link"
+}

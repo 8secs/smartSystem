@@ -1,0 +1,13 @@
+{
+    "name": "8secs/smart-admin",
+    "description": "Admin system for SmartSystem",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andres Rangel",
+            "email": "arangeltorres@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

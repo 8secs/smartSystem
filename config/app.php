@@ -154,6 +154,7 @@ return [
          */
         Arangel\SmartLang\SmartLangServiceProvider::class,
         Arangel\SmartAuth\Provider\SmartAuthServiceProvider::class,
+        Arangel\SmartAdmin\Provider\SmartAdminServiceProvider::class,
 
         /*
          * Application Service Providers...

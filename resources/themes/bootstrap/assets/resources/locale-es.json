@@ -1,7 +1,33 @@
 {
-    "HOME" : "Inico",
+    "HOME" : "Inicio",
     "LOGIN" : "Entrar",
     "SIGN_UP" : "Registro",
     "LOG_OUT" : "Salir",
-    "DASHBOARD" : "Tablero"
+    "DASHBOARD" : "Tablero",
+    "FORGOT_PASS" : "Has olvidado tu contraseña?",
+    "DONT_ACCOUNT" : "No tienes una cuenta todavía? ",
+    "SIGN_FACEBOOK" : "Entrar con Facebook",
+    "NAME" : "Nombre",
+    "EMAIL" : "Correo",
+    "PASSWORD" : "Contraseña",
+    "CONFIRM_PASSWORD" : "Confirmar contraseña",
+    "BY_CLICK_TERMS" : "Al hacer clic en Entrar aceptas los  ",
+    "TERMS_CONDITIONS" : "términos y condiciones ",
+    "AND" : " y ",
+    "OR" : " o ",
+    "PRIVACY_POLICY" : "política de privacidad ",
+    "ALLREADY_HAVE" : " Ya tienes cuenta? ",
+    "LOGIN_NOW" : "Entrar ahora",
+    "RESET_PASSWORD" : "Resetear contraseña",
+    "SEND_PASSWORD_LINK" : "Enviar reseteo de contraseña",
+
+    "error" : {
+        "NAME" : "Debes introducir un nombre.",
+        "EMAIL" : "Debes introducir tu email",
+        "EMAIL_REQUIRED" : "El email es obligatorio.",
+        "EMAIL_INVALID" : "La cuenta de email no es válida.",
+        "PASS_REQUIRED" : "La contraseña es obligatoria.",
+        "PASS_MATCH" : "Las contraseñas deben coincidir."
+    }
+
 }

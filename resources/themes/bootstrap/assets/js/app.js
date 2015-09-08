@@ -9,6 +9,7 @@
             'pascalprecht.translate',
             'ngCookies',
             'ngSanitize',
+            'satellizer',
             'auth'
         ])
         .run(function($rootScope){
@@ -20,14 +21,11 @@
                     prefix: 'themes/bootstrap/assets/resources/locale-',
                     suffix: '.json'
                 });
-
                 $translateProvider.determinePreferredLanguage();
                 $translateProvider.useLocalStorage();
                 $translateProvider.useSanitizeValueStrategy('sanitize');
-
         })
         .config(function($stateProvider, $urlRouterProvider) {
-
             $stateProvider
                 .state('public',{
                     templateUrl: 'themes/bootstrap/layouts/web.html',
@@ -39,10 +37,7 @@
                     templateUrl: 'themes/bootstrap/partials/home.html',
                     parent: 'public'
                 });
-
-
             $urlRouterProvider.otherwise('/');
-
         })
 
 })();

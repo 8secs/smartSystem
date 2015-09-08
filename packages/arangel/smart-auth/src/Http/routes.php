@@ -8,23 +8,23 @@
 
 Route::group(['prefix' => 'auth'], function(){
 
-    Route::post('twitter', 'AuthController@twitter');
-    Route::post('facebook', 'AuthController@facebook');
-    Route::post('foursquare', 'AuthController@foursquare');
-    Route::post('github', 'AuthController@github');
-    Route::post('google', 'AuthController@google');
-    Route::post('linkedin', 'AuthController@linkedin');
-    Route::post('login', 'AuthController@login');
-    Route::post('signup', 'AuthController@signup');
-    Route::post('password/email', 'AuthController@postEmail');
-    Route::post('password/reset', 'AuthController@postReset');
-    Route::get('verify/{activation_code}', 'AuthController@verifyEmail');
-    Route::get('unlink/{provider}', ['middleware' => 'auth', 'uses' => 'AuthController@unlink']);
+    Route::post('twitter', 'Arangel\SmartAuth\Http\Controllers\AuthController@twitter');
+    Route::post('facebook', 'Arangel\SmartAuth\Http\Controllers\AuthController@facebook');
+    Route::post('foursquare', 'Arangel\SmartAuth\Http\Controllers\AuthController@foursquare');
+    Route::post('github', 'Arangel\SmartAuth\Http\Controllers\AuthController@github');
+    Route::post('google', 'Arangel\SmartAuth\Http\Controllers\AuthController@google');
+    Route::post('linkedin', 'Arangel\SmartAuth\Http\Controllers\AuthController@linkedin');
+    Route::post('login', 'Arangel\SmartAuth\Http\Controllers\AuthController@login');
+    Route::post('signup', 'Arangel\SmartAuth\Http\Controllers\AuthController@signup');
+    Route::post('password/email', 'Arangel\SmartAuth\Http\Controllers\AuthController@postEmail');
+    Route::post('password/reset', 'Arangel\SmartAuth\Http\Controllers\AuthController@postReset');
+    Route::get('verify/{activation_code}', 'Arangel\SmartAuth\Http\Controllers\AuthController@verifyEmail');
+    Route::get('unlink/{provider}', ['middleware' => 'auth', 'uses' => 'Arangel\SmartAuth\Http\Controllers\AuthController@unlink']);
 });
 
 Route::group(['prefix' => 'api', 'middleware' => 'auth'], function(){
     // API Routes.
-    Route::get('me', ['uses' => 'UserController@getUser']);
-    Route::put('me', ['uses' => 'UserController@updateUser']);
+    Route::get('me', ['uses' => 'Arangel\SmartAuth\Http\Controllers\UserController@getUser']);
+    Route::put('me', ['uses' => 'Arangel\SmartAuth\Http\Controllers\UserController@updateUser']);
 
 });

@@ -4,6 +4,8 @@ namespace Arangel\SmartAuth\Provider;
 
 use Illuminate\Support\ServiceProvider;
 
+use Caffeinated\Themes\Facades\Theme;
+
 class SmartAuthServiceProvider extends ServiceProvider
 {
 
@@ -14,7 +16,13 @@ class SmartAuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__.'/../Database/migrations/' => database_path('migrations')
+        ], 'migrations');
+
+        $this->publishes([
+            __DIR__.'/../Resources/lang/' => public_path('themes/'. Theme::getActive() . '/assets/resources/auth'),
+        ], 'lang');
     }
 
     /**
@@ -24,24 +32,11 @@ class SmartAuthServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerNamespaces();
-        $this->registerProviders();
+        include __DIR__.'/../Http/routes.php';
+
+        $this->app->make('Arangel\SmartAuth\Http\Controllers\AuthController');
+        $this->app->make('Arangel\SmartAuth\Http\Controllers\UserController');
+
     }
 
-    protected function registerNamespaces()
-    {
-
-        //View::addNamespace('smartSystem', realpath(__DIR__.'/../Resources/Views'));
-    }
-
-    /**
-     * add Prvoiders
-     *
-     * @return void
-     */
-    private function registerProviders()
-    {
-        //$app = $this->app;
-        //$app->register('Arangel\SmartAuth\Provider\SmartAuthServiceProvider');
-    }
 }

@@ -2,27 +2,27 @@
     .row
         .panel.text-center
             .panel-body
-                h2.text-center Log in
+                h2.text-center {{ 'LOGIN' | translate }}
                 form(method='post', ng-submit='login()', name='loginForm')
                     .form-group
                         alert(ng-repeat='alert in alerts', type='{{alert.type}}', close='alert.close()') {{ alert.msg }}
                     .form-group.has-feedback
-                        input.form-control.input-lg(type='text', name='email', ng-model='email', placeholder='Email', required='', autofocus='')
+                        input.form-control.input-lg(type='text', name='email', ng-model='email', placeholder='{{"EMAIL" | translate }}', required='', autofocus='')
                         span.ion-at.form-control-feedback
                     .form-group.has-feedback
-                        input.form-control.input-lg(type='password', name='password', ng-model='password', placeholder='Password', required='')
+                        input.form-control.input-lg(type='password', name='password', ng-model='password', placeholder='{{"PASSWORD" | translate }}', required='')
                         span.ion-key.form-control-feedback
-                    button.btn.btn-lg.btn-block.btn-success(type='submit', ng-disabled='loginForm.$invalid') Log in
+                    button.btn.btn-lg.btn-block.btn-success(type='submit', ng-disabled='loginForm.$invalid') {{ 'LOGIN' | translate }}
                     br
                     p.text-center
-                        a(href='#', ui-sref='password') Forgot your password?
+                        a(href='#', ui-sref='password') {{ 'FORGOT_PASS' | translate }}
                     p.text-center.text-muted
                         small
-                            | Don&apos;t have an account yet?&nbsp;
-                            a(href='/#/signup') Sign up
+                            | {{ 'DONT_ACCOUNT' | translate }}
+                            a(href='/#/signup') {{ 'SIGN_UP' | translate }}
                     .signup-or-separator
-                        h6.text or
+                        h6.text {{ 'OR' | translate }}
                         hr
                 button.btn.btn-block.btn-facebook(ng-click="authenticate('facebook')")
                     i.ion-social-facebook
-                    |  Sign in with Facebook
+                    |  {{ 'SIGN_FACEBOOK' | translate }}

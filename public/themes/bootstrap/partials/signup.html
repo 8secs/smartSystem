@@ -1,0 +1,43 @@
+
+<div class="auth container">
+  <div class="row">
+    <div class="center-form panel">
+      <div class="panel-body">
+        <h2 class="text-center">Sign up</h2>
+        <form method="post" ng-submit="signup()" name="signupForm">
+          <div class="form-group">
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
+          </div>
+          <div ng-class="{ 'has-error' : signupForm.displayName.$invalid &amp;&amp; signupForm.displayName.$dirty }" class="form-group has-feedback">
+            <input type="text" name="displayName" ng-model="displayName" placeholder="{{&quot;NAME&quot; | translate}}" required="" autofocus="" class="form-control input-lg"/><span class="ion-person form-control-feedback"></span>
+            <div ng-if="signupForm.displayName.$dirty" ng-messages="signupForm.displayName.$error" class="help-block text-danger">
+              <div ng-message="required">{{"error.NAME" | translate}}</div>
+            </div>
+          </div>
+          <div ng-class="{ 'has-error' : signupForm.email.$invalid &amp;&amp; signupForm.email.$dirty }" class="form-group has-feedback">
+            <input id="email" type="email" name="email" ng-model="email" placeholder="{{&quot;EMAIL&quot; | translate}}" required="" class="form-control input-lg"/><span class="ion-at form-control-feedback"></span>
+            <div ng-if="signupForm.email.$dirty" ng-messages="signupForm.email.$error" class="help-block text-danger">
+              <div ng-message="required">{{"error.EMAIL_REQUIRED" | translate}}</div>
+              <div ng-message="pattern">{{"error.EMAIL_INVALID" | translate}}</div>
+            </div>
+          </div>
+          <div ng-class="{ 'has-error' : signupForm.password.$invalid &amp;&amp; signupForm.password.$dirty }" class="form-group has-feedback">
+            <input password-strength="" type="password" name="password" ng-model="password" placeholder="{{&quot;PASSWORD&quot; | translate}}" required="" class="form-control input-lg"/><span class="ion-key form-control-feedback"></span>
+            <div ng-if="signupForm.password.$dirty" ng-messages="signupForm.password.$error" class="help-block text-danger">
+              <div ng-message="required">{{"error.PASS_REQUIRED" | translate}}</div>
+            </div>
+          </div>
+          <div ng-class="{ 'has-error' : signupForm.confirmPassword.$invalid &amp;&amp; signupForm.confirmPassword.$dirty }" class="form-group has-feedback">
+            <input password-match="password" type="password" name="confirmPassword" ng-model="confirmPassword" placeholder="{{&quot;CONFIRM_PASSWORD&quot; | translate}}" class="form-control input-lg"/><span class="ion-key form-control-feedback"></span>
+            <div ng-if="signupForm.confirmPassword.$dirty" ng-messages="signupForm.confirmPassword.$error" class="help-block text-danger">
+              <div ng-message="compareTo">{{"error.PASS_MATCH" | translate}}</div>
+            </div>
+          </div>
+          <p class="text-center text-muted"><small>{{"BY_CLICK_TERMS" | translate}}<a href="#">{{"TERMS_CONDITIONS" | translate}}</a> {{"AND" | translate}}<a href="#">{{"PRIVACY_POLICY" | translate}}</a></small></p>
+          <button type="submit" ng-disabled="signupForm.$invalid" class="btn btn-lg btn-block btn-primary">{{"SIGN_UP" | translate}}</button><br/>
+          <p class="text-center text-muted">{{"ALLREADY_HAVE" | translate}}<a href="/#/login">{{"LOGIN_NOW" | translate}}</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -39,7 +39,8 @@
         "psr-4": {
             "App\\": "app/",
             "Arangel\\SmartLang\\": "packages/arangel/smart-lang/src",
-            "Arangel\\SmartAuth\\": "packages/arangel/smart-auth/src"
+            "Arangel\\SmartAuth\\": "packages/arangel/smart-auth/src",
+            "Arangel\\SmartAdmin\\": "packages/arangel/smart-admin/src"
         }
     },
     "autoload-dev": {

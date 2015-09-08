@@ -2,40 +2,40 @@
     .row
         .center-form.panel
             .panel-body
-                h2.text-center Sign up
+                h2.text-center {{ 'SIGN_UP' | translate}}
 
                 form(method='post', ng-submit='signup()', name='signupForm')
                     .form-group
                         alert(ng-repeat='alert in alerts', type='{{alert.type}}', close='alert.close()') {{ alert.msg }}
                     .form-group.has-feedback(ng-class="{ 'has-error' : signupForm.displayName.$invalid && signupForm.displayName.$dirty }")
-                        input.form-control.input-lg(type='text', name='displayName', ng-model='displayName', placeholder='Name', required='', autofocus='')
+                        input.form-control.input-lg(type='text', name='displayName', ng-model='displayName', placeholder='{{"NAME" | translate}}', required='', autofocus='')
                         span.ion-person.form-control-feedback
                         .help-block.text-danger(ng-if='signupForm.displayName.$dirty', ng-messages='signupForm.displayName.$error')
-                            div(ng-message='required') You must enter your name.
+                            div(ng-message='required') {{"error.NAME" | translate}}
                     .form-group.has-feedback(ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }")
-                        input#email.form-control.input-lg(type='email', name='email', ng-model='email', placeholder='Email', required='')
+                        input#email.form-control.input-lg(type='email', name='email', ng-model='email', placeholder='{{"EMAIL" | translate}}', required='')
                         span.ion-at.form-control-feedback
                         .help-block.text-danger(ng-if='signupForm.email.$dirty', ng-messages='signupForm.email.$error')
-                            div(ng-message='required') Your email address is required.
-                            div(ng-message='pattern') Your email address is invalid.
+                            div(ng-message='required') {{"error.EMAIL_REQUIRED" | translate}}
+                            div(ng-message='pattern') {{"error.EMAIL_INVALID" | translate}}
                     .form-group.has-feedback(ng-class="{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }")
-                        input.form-control.input-lg(password-strength='', type='password', name='password', ng-model='password', placeholder='Password', required='')
+                        input.form-control.input-lg(password-strength='', type='password', name='password', ng-model='password', placeholder='{{"PASSWORD" | translate}}', required='')
                         span.ion-key.form-control-feedback
                         .help-block.text-danger(ng-if='signupForm.password.$dirty', ng-messages='signupForm.password.$error')
-                            div(ng-message='required') Password is required.
+                            div(ng-message='required') {{"error.PASS_REQUIRED" | translate}}
                     .form-group.has-feedback(ng-class="{ 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }")
-                        input.form-control.input-lg(password-match='password', type='password', name='confirmPassword', ng-model='confirmPassword', placeholder='Confirm Password')
+                        input.form-control.input-lg(password-match='password', type='password', name='confirmPassword', ng-model='confirmPassword', placeholder='{{"CONFIRM_PASSWORD" | translate}}')
                         span.ion-key.form-control-feedback
                         .help-block.text-danger(ng-if='signupForm.confirmPassword.$dirty', ng-messages='signupForm.confirmPassword.$error')
-                            div(ng-message='compareTo') Password must match.
+                            div(ng-message='compareTo') {{"error.PASS_MATCH" | translate}}
                     p.text-center.text-muted
                         small
-                            | By clicking on Sign up, you agree to
-                            a(href='#') terms &amp; conditions
-                            |  and
-                            a(href='#') privacy policy
-                    button.btn.btn-lg.btn-block.btn-primary(type='submit', ng-disabled='signupForm.$invalid') Sign up
+                            | {{"BY_CLICK_TERMS" | translate}}
+                            a(href='#') {{"TERMS_CONDITIONS" | translate}}
+                            |  {{"AND" | translate}}
+                            a(href='#') {{"PRIVACY_POLICY" | translate}}
+                    button.btn.btn-lg.btn-block.btn-primary(type='submit', ng-disabled='signupForm.$invalid') {{"SIGN_UP" | translate}}
                     br
                     p.text-center.text-muted
-                        | Already have an account?
-                        a(href='/#/login') Log in now
+                        | {{"ALLREADY_HAVE" | translate}}
+                        a(href='/#/login') {{"LOGIN_NOW" | translate}}
