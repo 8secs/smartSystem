@@ -2,7 +2,13 @@
     'use strict';
 
     angular.module('auth')
-        .controller('LoginCtrl', function($scope, $state, $stateParams, alertService, $auth, Account, $log) {
+        .controller('LoginCtrl', function($scope,
+                                        $state,
+                                        $stateParams,
+                                        alertService,
+                                        $auth,
+                                        Account,
+                                        $log) {
 
             $scope.alerts = alertService.get();
 
@@ -10,7 +16,7 @@
                 $auth.login({ email: $scope.email, password: $scope.password })
                     .then(function() {
                         alertService.add('success', 'You have successfully logged in');
-                        $scope.getUser();
+                        //$scope.getUser();
 
                     })
                     .catch(function(response) {

@@ -67,7 +67,14 @@
     'use strict';
 
     angular.module('auth')
-        .controller('WebCtrl', function($rootScope, $state, $stateParams, $scope, $log, $auth, ProfileService, alertService){
+        .controller('WebCtrl', function($rootScope,
+                                        $state,
+                                        $stateParams,
+                                        $scope,
+                                        $log,
+                                        $auth,
+                                        ProfileService,
+                                        alertService){
             /*$rootScope.stylesheets = [
                 {href: 'themes/'+$rootScope.config.activeTheme+'assets/css/auth.css', type: 'text/css'}
             ];*/
@@ -94,8 +101,8 @@
                         alertService.add('error', error);
                     });
             };
-
-            if($scope.isAuthenticated()) $scope.getUser();
+            $log.log("init WebCtrl");
+            //if($scope.isAuthenticated()) $scope.getUser();
 
 
         });
@@ -374,7 +381,13 @@
     'use strict';
 
     angular.module('auth')
-        .controller('LoginCtrl', function($scope, $state, $stateParams, alertService, $auth, Account, $log) {
+        .controller('LoginCtrl', function($scope,
+                                        $state,
+                                        $stateParams,
+                                        alertService,
+                                        $auth,
+                                        Account,
+                                        $log) {
 
             $scope.alerts = alertService.get();
 
@@ -382,7 +395,7 @@
                 $auth.login({ email: $scope.email, password: $scope.password })
                     .then(function() {
                         alertService.add('success', 'You have successfully logged in');
-                        $scope.getUser();
+                        //$scope.getUser();
 
                     })
                     .catch(function(response) {
@@ -460,7 +473,7 @@
     'use strict';
 
     angular.module('auth')
-        .controller('SignupCtrl', function($scope, alertService, $auth) {
+        .controller('SignupCtrl',  function($scope, alertService, $auth) {
 
             $scope.alerts = alertService.get();
 

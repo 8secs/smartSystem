@@ -2,7 +2,14 @@
     'use strict';
 
     angular.module('auth')
-        .controller('WebCtrl', function($rootScope, $state, $stateParams, $scope, $log, $auth, ProfileService, alertService){
+        .controller('WebCtrl', function($rootScope,
+                                        $state,
+                                        $stateParams,
+                                        $scope,
+                                        $log,
+                                        $auth,
+                                        ProfileService,
+                                        alertService){
             /*$rootScope.stylesheets = [
                 {href: 'themes/'+$rootScope.config.activeTheme+'assets/css/auth.css', type: 'text/css'}
             ];*/
@@ -29,8 +36,8 @@
                         alertService.add('error', error);
                     });
             };
-
-            if($scope.isAuthenticated()) $scope.getUser();
+            $log.log("init WebCtrl");
+            //if($scope.isAuthenticated()) $scope.getUser();
 
 
         });

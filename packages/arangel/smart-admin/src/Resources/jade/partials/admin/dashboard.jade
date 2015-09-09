@@ -1,0 +1,114 @@
+section.content-header
+    h1
+        | Dashboard
+        small Quick view of important sections
+        ol.breadcrumb
+            li
+                a(href='#', ui-sref='dashboard')
+                    i.fa.fa-dashboard
+                    |  Dashboard
+        alert(ng-repeat='alert in alerts', type='{{alert.type}}', close='alert.close()') {{ alert.msg }}
+    // Main content
+    section.content
+        .row
+            .col-sm-6
+                .box.box-primary
+                    .box-header.with-border
+                        h3.box-title Should be your friends?
+                        .box-tools.pull-right
+                            button.btn.btn-box-tool(data-widget='collapse', data-toggle='tooltip', title='Collapse')
+                                i.fa.fa-minus
+                        // /.box-tools
+                    // /.box-header
+                    .box-body
+                        table.table.table-bordered
+                            tbody
+                                tr(ng-repeat='not_friend in not_friends')
+                                    td(width='48')
+                                        img(image-check='', ng-src='uploads/{{not_friend.image}}', alt='{{not_friend.displayName}}', width='48')
+                                    td {{not_friend.displayName}}
+                                    td.vert-align.text-center(width='10%')
+                                        button.btn.btn-primary.btn-sm(ng-click='addFriend(not_friend.id)')
+                                            i.fa.fa-user-plus
+                    // /.box-body
+                // /.box
+            .col-sm-6
+                .box.box-success
+                    .box-header.with-border
+                        h3.box-title Friends
+                        .box-tools.pull-right
+                            button.btn.btn-box-tool(data-widget='collapse', data-toggle='tooltip', title='Collapse')
+                                i.fa.fa-minus
+                        // /.box-tools
+                    // /.box-header
+                    .box-body
+                        table.table.table-bordered
+                            tbody
+                                tr(ng-repeat='friend in friends')
+                                    td(width='48')
+                                        img(image-check='', ng-src='uploads/{{friend.image}}', alt='{{friend.displayName}}', width='48')
+                                    td {{friend.displayName}}
+                                    td.vert-align.text-center(width='10%')
+                                        button.btn.btn-danger.btn-sm(ng-click='removeFriend(friend.id)')
+                                            i.fa.fa-user
+                    // /.box-body
+                // /.box
+        .row
+            .col-sm-6
+                .box.box-warning
+                    .box-header.with-border
+                        h3.box-title Followers
+                        .box-tools.pull-right
+                            button.btn.btn-box-tool(data-widget='collapse', data-toggle='tooltip', title='Collapse')
+                                i.fa.fa-minus
+                        // /.box-tools
+                    // /.box-header
+                    .box-body
+                        table.table.table-bordered
+                            tbody
+                                tr(ng-repeat='follower in followers')
+                                    td(width='48')
+                                        img(image-check='', ng-src='uploads/{{follower.image}}', alt='{{friend.displayName}}', width='48')
+                                    td {{follower.displayName}}
+                    // /.box-body
+                // /.box
+            .col-sm-6
+                .box.box-danger
+                    .box-header.with-border
+                        h3.box-title Following
+                        .box-tools.pull-right
+                            button.btn.btn-box-tool(data-widget='collapse', data-toggle='tooltip', title='Collapse')
+                                i.fa.fa-minus
+                        // /.box-tools
+                    // /.box-header
+                    .box-body
+                        table.table.table-bordered
+                            tbody
+                                tr(ng-repeat='user in users')
+                                    td(width='48')
+                                        img(image-check='', ng-src='uploads/{{user.image}}', alt='{{user.displayName}}', width='48')
+                                    td {{user.displayName}}
+                                    td.vert-align.text-center(width='10%')
+                                        button.btn.btn-danger.btn-sm(ng-if='user.isFollowing', ng-click='removeFollowee(user.id)')
+                                            i.fa.fa-user
+                                        button.btn.btn-primary.btn-sm(ng-if='!user.isFollowing', ng-click='addFollowee(user.id)')
+                                            i.fa.fa-user-plus
+                    // /.box-body
+                // /.box
+        .row
+            .col-sm-6
+                .box.box-info
+                    .box-header.with-border
+                        h3.box-title Your position
+                        .box-tools.pull-right
+                            button.btn.btn-box-tool(data-widget='collapse', data-toggle='tooltip', title='Collapse')
+                                i.fa.fa-minus
+                    .box-body
+                        ui-gmap-google-map(center='map.center', zoom='map.zoom')
+                    .box-footer
+                        p
+                            strong City:
+                            |  {{httpLocation.city}},
+                            strong Country:
+                            | {{httpLocation.country}}
+    // /.content

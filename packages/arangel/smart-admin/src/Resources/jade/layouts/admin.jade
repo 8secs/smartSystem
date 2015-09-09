@@ -1,0 +1,13 @@
+.wrapper(admin-lte-layout='')
+    div(ng-controller='AdminCtrl')
+        header.main-header(ui-view='header')
+        aside.main-sidebar
+            section.sidebar(ui-view='sidebar', admin-lte-sidebar-toggle-swipe='')
+        .content-wrapper(ui-view='')
+        footer.main-footer(ui-view='footer')
+        // Control Sidebar
+        aside.control-sidebar.control-sidebar-light(ui-view='control', admin-lte-control-sidebar='')
+        //
+          Add the sidebar's background. This div must be placed
+          immediately after the control sidebar
+        .control-sidebar-bg

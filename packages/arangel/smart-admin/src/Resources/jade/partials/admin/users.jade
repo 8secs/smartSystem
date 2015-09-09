@@ -1,0 +1,50 @@
+section.content-header
+    h1
+        | Users
+        small Users list
+        ol.breadcrumb
+            li
+                a(href='#', ui-sref='dashboard')
+                    i.fa.fa-dashboard
+                    |  Dashboard
+            li
+                a(href='#', ui-sref='users')
+                    i.fa.fa-users
+                    | Users
+        alert(ng-repeat='alert in alerts', type='{{alert.type}}', close='alert.close()') {{ alert.msg }}
+    // Main content
+    section.content
+        .box
+            .box-header.with-border
+                h3.box-title Users
+                .box-tools.pull-right
+                    // Buttons, labels, and many other things can be placed here!
+                    // Here is a label for example
+                    span.label.label-primary Label
+                // /.box-tools
+            // /.box-header
+            .box-body
+                .row
+                    .col-sm-12
+                        table.ui.table(ng-table='tableParams', show-filter='true')
+                            tr(ng-repeat='user in users')
+                                td(style='width: 52px;')
+                                    img(check-image='', ng-src='uploads/{{user.image}}', width='48')
+                                td(data-title="'Display Name'", sortable="'displayName'", filter="{'displayName' : 'text'}") {{user.displayName}}
+                                td(data-title="'Email'", sortable="'email'", filter="{ 'email': 'text' }") {{user.email}}
+                                td.text-center(data-title="'Actions'", width='150')
+                                    a.btn.btn-warning.btn-xs(href='', ui-sref='edit-user({userID: user.id, editUser: true})') Edit
+                                    // <a href="" ng-click="deleteUser(user.id)" class="btn btn-danger btn-xs">Delete</a>
+                                    a.btn.btn-danger.btn-xs(href='', ng-click="showModal('user', user.id)", data-animation='am-fade-and-slide-top') Delete
+            // /.box-body
+            .box-footer
+                .row
+                    .col-md-6
+                        strong Page:
+                        |  {{tableParams.page()}}
+                    .col-md-6.text-right
+                        strong Count per page:
+                        |  {{tableParams.count()}}
+            // box-footer
+        // /.box
+    // /.content

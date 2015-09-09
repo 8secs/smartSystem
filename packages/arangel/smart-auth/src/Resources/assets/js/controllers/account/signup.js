@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('auth')
-        .controller('SignupCtrl', function($scope, alertService, $auth) {
+        .controller('SignupCtrl',  function($scope, alertService, $auth) {
 
             $scope.alerts = alertService.get();
 

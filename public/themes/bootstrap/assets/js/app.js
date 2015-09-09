@@ -10,7 +10,8 @@
             'ngCookies',
             'ngSanitize',
             'satellizer',
-            'auth'
+            'auth',
+            'Admin'
         ])
         .run(function($rootScope){
             $rootScope.config = _config;
@@ -30,7 +31,7 @@
                 .state('public',{
                     templateUrl: 'themes/bootstrap/layouts/web.html',
                     abstract: true,
-                    controller: 'WebCtrl'
+                    controller: 'PublicCtrl'
                 })
                 .state('home', {
                     url: '/',

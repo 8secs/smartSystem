@@ -1,0 +1,141 @@
+
+<section class="content-header">
+  <h1>Dashboard<small>Quick view of important sections</small>
+    <ol class="breadcrumb">
+      <li><a href="#" ui-sref="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    </ol>
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
+  </h1>
+  <!-- Main content-->
+  <section class="content">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Should be your friends?</h3>
+            <div class="box-tools pull-right">
+              <button data-widget="collapse" data-toggle="tooltip" title="Collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+            </div>
+            <!-- /.box-tools-->
+          </div>
+          <!-- /.box-header-->
+          <div class="box-body">
+            <table class="table table-bordered">
+              <tbody>
+                <tr ng-repeat="not_friend in not_friends">
+                  <td width="48"><img image-check="" ng-src="uploads/{{not_friend.image}}" alt="{{not_friend.displayName}}" width="48"/></td>
+                  <td>{{not_friend.displayName}}</td>
+                  <td width="10%" class="vert-align text-center">
+                    <button ng-click="addFriend(not_friend.id)" class="btn btn-primary btn-sm"><i class="fa fa-user-plus"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body-->
+        </div>
+        <!-- /.box-->
+      </div>
+      <div class="col-sm-6">
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Friends</h3>
+            <div class="box-tools pull-right">
+              <button data-widget="collapse" data-toggle="tooltip" title="Collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+            </div>
+            <!-- /.box-tools-->
+          </div>
+          <!-- /.box-header-->
+          <div class="box-body">
+            <table class="table table-bordered">
+              <tbody>
+                <tr ng-repeat="friend in friends">
+                  <td width="48"><img image-check="" ng-src="uploads/{{friend.image}}" alt="{{friend.displayName}}" width="48"/></td>
+                  <td>{{friend.displayName}}</td>
+                  <td width="10%" class="vert-align text-center">
+                    <button ng-click="removeFriend(friend.id)" class="btn btn-danger btn-sm"><i class="fa fa-user"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body-->
+        </div>
+        <!-- /.box-->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="box box-warning">
+          <div class="box-header with-border">
+            <h3 class="box-title">Followers</h3>
+            <div class="box-tools pull-right">
+              <button data-widget="collapse" data-toggle="tooltip" title="Collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+            </div>
+            <!-- /.box-tools-->
+          </div>
+          <!-- /.box-header-->
+          <div class="box-body">
+            <table class="table table-bordered">
+              <tbody>
+                <tr ng-repeat="follower in followers">
+                  <td width="48"><img image-check="" ng-src="uploads/{{follower.image}}" alt="{{friend.displayName}}" width="48"/></td>
+                  <td>{{follower.displayName}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body-->
+        </div>
+        <!-- /.box-->
+      </div>
+      <div class="col-sm-6">
+        <div class="box box-danger">
+          <div class="box-header with-border">
+            <h3 class="box-title">Following</h3>
+            <div class="box-tools pull-right">
+              <button data-widget="collapse" data-toggle="tooltip" title="Collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+            </div>
+            <!-- /.box-tools-->
+          </div>
+          <!-- /.box-header-->
+          <div class="box-body">
+            <table class="table table-bordered">
+              <tbody>
+                <tr ng-repeat="user in users">
+                  <td width="48"><img image-check="" ng-src="uploads/{{user.image}}" alt="{{user.displayName}}" width="48"/></td>
+                  <td>{{user.displayName}}</td>
+                  <td width="10%" class="vert-align text-center">
+                    <button ng-if="user.isFollowing" ng-click="removeFollowee(user.id)" class="btn btn-danger btn-sm"><i class="fa fa-user"></i></button>
+                    <button ng-if="!user.isFollowing" ng-click="addFollowee(user.id)" class="btn btn-primary btn-sm"><i class="fa fa-user-plus"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body-->
+        </div>
+        <!-- /.box-->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">Your position</h3>
+            <div class="box-tools pull-right">
+              <button data-widget="collapse" data-toggle="tooltip" title="Collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
+            <ui-gmap-google-map center="map.center" zoom="map.zoom"></ui-gmap-google-map>
+          </div>
+          <div class="box-footer">
+            <p><strong>City:</strong> {{httpLocation.city}},<strong>Country:</strong>{{httpLocation.country}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /.content-->
+</section>

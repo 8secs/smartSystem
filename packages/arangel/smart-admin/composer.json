@@ -9,5 +9,7 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "a6digital/laravel-default-profile-image": "^1.0"
+    }
 }

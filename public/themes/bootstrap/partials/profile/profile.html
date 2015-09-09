@@ -1,0 +1,68 @@
+
+<section class="content-header">
+  <h1 ng-if="!editUser">User Profile
+    <h1 ng-if="editUser">Edit User</h1>
+    <ol class="breadcrumb">
+      <li><a href="#" ui-sref="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li ng-if="!editUser" class="active">User profile</li>
+      <li ng-if="editUser"><a href="#" ui-sref="users"><i class="fa fa-users"></i>Users</a></li>
+      <li ng-if="editUser" class="active">Edit user</li>
+    </ol>
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
+  </h1>
+  <!-- Main content-->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-3">
+        <!-- Profile Image-->
+        <div class="box box-primary">
+          <div class="box-body box-profile"><img src="{{userProfile.image}}" alt="User profile picture" class="profile-user-img img-responsive img-circle"/>
+            <h3 class="profile-username text-center">{{userProfile.user.displayName}}</h3>
+            <p class="text-muted text-center">{{userProfile.about.position}}</p>
+            <ul class="list-group list-group-unbordered">
+              <li class="list-group-item"><b>Followers</b><a class="pull-right">{{num_followers}}</a></li>
+              <li class="list-group-item"><b>Following</b><a class="pull-right">{{num_followees}}</a></li>
+              <li class="list-group-item"><b>Friends</b><a class="pull-right">{{num_friends}}</a></li>
+            </ul><a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+          </div>
+          <!-- /.box-body-->
+        </div>
+        <!-- /.box-->
+        <!-- About Me Box-->
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 ng-if="!editUser" class="box-title">About Me</h3>
+            <h3 ng-if="editUser" class="box-title">About<strong>{{userProfile.user.displayName}}</strong></h3>
+          </div>
+          <!-- /.box-header-->
+          <div class="box-body"><strong><i class="fa fa-book margin-r-5"></i>  Education</strong>
+            <p class="text-muted">{{userProfile.about.education}}
+              <!-- B.S. in Computer Science from the University of Tennessee at Knoxville-->
+            </p>
+            <hr/><strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+            <p class="text-muted">{{userProfile.user.locations[0].formattedAddress}}</p>
+            <hr/><strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+            <p><span class="label label-danger">UI Design</span><span class="label label-success">Coding</span><span class="label label-info">Javascript</span><span class="label label-warning">PHP</span><span class="label label-primary">Node.js</span></p>
+            <hr/><strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+            <p>{{userProfile.about.about_me}}</p>
+          </div>
+          <!-- /.box-body-->
+        </div>
+        <!-- /.box-->
+      </div>
+      <!-- /.col-->
+      <div class="col-md-9">
+        <div class="nav-tabs-custom">
+          <tabset>
+            <tab active="pane.active" heading="{{pane.title}}" ng-repeat="pane in panes">
+              <div ng-include="pane.content"></div>
+            </tab>
+          </tabset>
+        </div>
+      </div>
+      <!-- /.col-->
+    </div>
+    <!-- /.row-->
+  </section>
+  <!-- /.content-->
+</section>

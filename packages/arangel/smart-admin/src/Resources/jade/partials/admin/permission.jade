@@ -1,0 +1,42 @@
+section.content-header
+    h1
+        | Permission
+        small(ng-show='!editPerm') Create permission
+        small(ng-show='editPerm') Edit permission
+        ol.breadcrumb
+            li
+                a(href='#', ui-sref='dashboard')
+                    i.fa.fa-dashboard
+                    |  Dashboard
+            li
+                a(href='#', ui-sref='roles')
+                    i.fa.fa-certificate
+                    | Roles
+            li
+                a(href='#', ui-sref='permission')
+                    i.fa.fa-lock
+                    | Permission
+        alert(ng-repeat='alert in alerts', type='{{alert.type}}', close='alert.close()') {{ alert.msg }}
+    // Main content
+    section.content
+        .box
+            .box-header
+                h3.box-title Permissions
+                .box-tools.pull-right
+                    button.btn.btn-primary(ui-sref='roles') Volver
+            form(method='post', name='permissionForm')
+                .box-body
+                    .row
+                        .col-md-8.col-md-offset-2
+                            h3(ng-if='!editPerm') New Permission
+                            h3(ng-if='editPerm') Update Permission
+                            .form-group.has-feedback
+                                input.form-control.input-lg(type='text', name='name', ng-model='permission.name', placeholder='Name', required='', autofocus='')
+                            .form-group.has-feedback
+                                input.form-control.input-lg(type='text', name='display_name', ng-model='permission.display_name', placeholder='Display Name', required='')
+                            .form-group.has-feedback
+                                input.form-control.input-lg(type='text', name='description', ng-model='permission.description', placeholder='Description')
+                .box-footer
+                    button.btn.btn-primary(type='button', click="alert('hello world!')") Create
+                    // <button ng-if="editPerm" type="submit" ng-disabled="permissionForm.$invalid" class="btn btn-primary" ng-click="submitPermission(permission)">Update Information</button>
+    // /.content
