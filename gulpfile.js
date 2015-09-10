@@ -36,8 +36,8 @@ function getTask(task, b_path, p_path) {
 elixir(function(mix) {
 
     gulp.task('auth-scripts', getTask('auth-scripts', packages_path+'/smart-auth/src/Resources/assets/js', public_path));
-    gulp.task('auth-less', getTask('auth-less', packages_path+'/smart-auth/src/Resources/assets/less', public_path));
-    gulp.task('auth-jade', getTask('auth-jade', packages_path+'/smart-auth/src/Resources/jade', public_path));
+    gulp.task('auth-less', getTask('less', packages_path+'/smart-auth/src/Resources/assets/less', public_path));
+    gulp.task('auth-jade', getTask('jade', packages_path+'/smart-auth/src/Resources/jade', public_path));
     //gulp.task('auth-lang', getTask('auth-lang', packages_path+'/smart-auth/src/Resources/lang', themeResources+'assets/resources/'));
 
     gulp.task('jade', function() {
@@ -89,7 +89,7 @@ elixir(function(mix) {
         .scripts(["app.js"
         ], public_path+'assets/js/app.js')
         .scripts([
-            "controllers/web.js"
+            "controllers/public.js"
         ], public_path+'assets/js/controllers.js')
         .scripts([
             "directives/checkImage.js"
