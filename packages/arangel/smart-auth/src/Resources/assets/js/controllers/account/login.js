@@ -10,7 +10,8 @@
                 $auth.login({ email: $scope.email, password: $scope.password })
                     .then(function() {
                         alertService.add('success', 'You have successfully logged in');
-                        $scope.getUser();
+                        //$scope.getUser();
+                        $state.transitionTo('home', $stateParams, {reload: true});
 
                     })
                     .catch(function(response) {

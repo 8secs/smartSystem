@@ -1,3 +1,4 @@
-ng-include(src="header")
-div(ui-view='')
-ng-include(src="footer")
+div(ng-controller='AuthCtrl')
+    ng-include(src='header')
+    div(ui-view='')
+    ng-include(src='footer')

@@ -3,7 +3,7 @@
   <div class="row">
     <div class="center-form panel">
       <div class="panel-body">
-        <h2 class="text-center">Sign up</h2>
+        <h2 class="text-center">{{ 'SIGN_UP' | translate}}</h2>
         <form method="post" ng-submit="signup()" name="signupForm">
           <div class="form-group">
             <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>

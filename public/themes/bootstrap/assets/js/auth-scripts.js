@@ -20,34 +20,34 @@
         .config(function($stateProvider, $urlRouterProvider, $authProvider) {
 
             $stateProvider
-                .state('auth-public',{
+                /*.state('public',{
                     templateUrl: 'themes/bootstrap/layouts/web.html',
                     abstract: true,
                     controller: 'WebCtrl'
-                })
+                })*/
                 .state('login', {
                     url: '/login',
                     templateUrl: 'themes/bootstrap/partials/login.html',
                     controller: 'LoginCtrl',
-                    parent: 'auth-public'
+                    parent: 'public'
                 })
                 .state('signup', {
                     url: '/signup',
                     templateUrl: 'themes/bootstrap/partials/signup.html',
                     controller: 'SignupCtrl',
-                    parent: 'auth-public'
+                    parent: 'public'
                 })
                 .state('password', {
                     url: '/password',
                     templateUrl: 'themes/bootstrap/partials/password.html',
                     controller: 'LoginCtrl',
-                    parent: 'auth-public'
+                    parent: 'public'
                 })
                 .state('reset', {
                     url: '/reset/:token',
                     templateUrl: 'themes/bootstrap/partials/reset.html',
                     controller: 'LoginCtrl',
-                    parent: 'auth-public'
+                    parent: 'public'
                 })
                 .state('logout', {
                     url: '/logout',
@@ -67,10 +67,18 @@
     'use strict';
 
     angular.module('auth')
-        .controller('WebCtrl', function($rootScope, $state, $stateParams, $scope, $log, $auth, ProfileService, alertService){
-            /*$rootScope.stylesheets = [
-                {href: 'themes/'+$rootScope.config.activeTheme+'assets/css/auth.css', type: 'text/css'}
-            ];*/
+        .controller('AuthCtrl', function($rootScope,
+                                         $state,
+                                         $stateParams,
+                                         $scope,
+                                         $log,
+                                         $auth,
+                                         ProfileService,
+                                         alertService)
+        {
+            var stylesheets = {href: 'themes/'+$rootScope.config.activeTheme+'/assets/css/auth.css', type: 'text/css'};
+
+            $rootScope.addStylesheet(stylesheets);
 
             $scope.isAuthenticated = function() {
                 return $auth.isAuthenticated();
@@ -94,10 +102,7 @@
                         alertService.add('error', error);
                     });
             };
-
             if($scope.isAuthenticated()) $scope.getUser();
-
-
         });
 })();
 /**
@@ -382,7 +387,8 @@
                 $auth.login({ email: $scope.email, password: $scope.password })
                     .then(function() {
                         alertService.add('success', 'You have successfully logged in');
-                        $scope.getUser();
+                        //$scope.getUser();
+                        $state.transitionTo('home', $stateParams, {reload: true});
 
                     })
                     .catch(function(response) {

@@ -20,34 +20,34 @@
         .config(function($stateProvider, $urlRouterProvider, $authProvider) {
 
             $stateProvider
-                .state('auth-public',{
+                /*.state('public',{
                     templateUrl: 'themes/bootstrap/layouts/web.html',
                     abstract: true,
                     controller: 'WebCtrl'
-                })
+                })*/
                 .state('login', {
                     url: '/login',
                     templateUrl: 'themes/bootstrap/partials/login.html',
                     controller: 'LoginCtrl',
-                    parent: 'auth-public'
+                    parent: 'public'
                 })
                 .state('signup', {
                     url: '/signup',
                     templateUrl: 'themes/bootstrap/partials/signup.html',
                     controller: 'SignupCtrl',
-                    parent: 'auth-public'
+                    parent: 'public'
                 })
                 .state('password', {
                     url: '/password',
                     templateUrl: 'themes/bootstrap/partials/password.html',
                     controller: 'LoginCtrl',
-                    parent: 'auth-public'
+                    parent: 'public'
                 })
                 .state('reset', {
                     url: '/reset/:token',
                     templateUrl: 'themes/bootstrap/partials/reset.html',
                     controller: 'LoginCtrl',
-                    parent: 'auth-public'
+                    parent: 'public'
                 })
                 .state('logout', {
                     url: '/logout',
