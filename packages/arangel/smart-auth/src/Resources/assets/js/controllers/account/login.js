@@ -17,7 +17,7 @@
                     .then(function() {
                         alertService.add('success', 'You have successfully logged in');
                         //$scope.getUser();
-
+                        $state.transitionTo('home', $stateParams, {reload: true});
                     })
                     .catch(function(response) {
                         if(response.status == 500) alertService.add('danger', response.statusText + ": code: " + response.status);

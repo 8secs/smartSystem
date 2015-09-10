@@ -24,6 +24,7 @@ Route::group(['prefix' => 'auth'], function(){
 
 Route::group(['prefix' => 'api', 'middleware' => 'auth'], function(){
     // API Routes.
+
     Route::get('me', ['uses' => 'Arangel\SmartAuth\Http\Controllers\UserController@getUser']);
     Route::put('me', ['uses' => 'Arangel\SmartAuth\Http\Controllers\UserController@updateUser']);
 

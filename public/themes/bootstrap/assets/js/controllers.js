@@ -6,26 +6,21 @@
                                         $state,
                                         $stateParams,
                                         $scope,
+                                        $auth,
                                         $log,
                                         $translate,
                                         GlobalService,
+                                        ProfileService,
                                         alertService){
 
             $rootScope.stylesheets = [
-                {href: 'themes/'+$rootScope.config.activeTheme+'/assets/css/styles.css', type: 'text/css'},
-                /*
-                *   TODO: ver como podemos cargar desde auth sus propios CSS
-                 */
-                {href: 'themes/'+$rootScope.config.activeTheme+'/assets/css/auth.css', type: 'text/css'},
-                {href: 'themes/'+$rootScope.config.activeTheme+'/assets/css/admin.css', type: 'text/css'}
+
+                {href: 'themes/'+$rootScope.config.activeTheme+'/assets/css/styles.css', type: 'text/css'}
             ];
 
-            $scope.currentLocale = null;
-            /*$scope.userProfile = null;
-            $scope.isAuthenticated = function() {
-                return false;
-            };*/
-            $log.log("publicCtrl");
+            $rootScope.addStylesheet = function(stylesheet){
+                $rootScope.stylesheets.push(stylesheet);
+            };
 
             $scope.setWebIncludes = function(include){
                 var url = 'themes/'+ $scope.config.activeTheme+'/includes/'+include+'.html';
@@ -34,6 +29,8 @@
 
             $scope.header = $scope.setWebIncludes('header');
             $scope.footer = $scope.setWebIncludes('footer');
+
+            $scope.currentLocale = null;
 
             $scope.getSopportedLocales = function(){
                 var promise = GlobalService.getSopportedLocales();

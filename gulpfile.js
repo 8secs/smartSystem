@@ -68,8 +68,8 @@ function getGlobalScripts(){
 elixir(function(mix) {
 
     /*
-    *   AUTH TASKS
-    */
+     *   AUTH TASKS
+     */
     gulp.task('auth-scripts', getTask('auth-scripts', packages_path+'/smart-auth/src/Resources/assets/js', public_path));
     gulp.task('auth-less', getTask('less', packages_path+'/smart-auth/src/Resources/assets/less', public_path));
     gulp.task('auth-jade', getTask('jade', packages_path+'/smart-auth/src/Resources/jade', public_path));
@@ -83,8 +83,8 @@ elixir(function(mix) {
     gulp.task('admin-jade', getTask('jade', packages_path+'/smart-admin/src/Resources/jade', public_path));
 
     /*
-    *   GLOBAL TASKS
-    */
+     *   GLOBAL TASKS
+     */
     gulp.task('global-jade', getTask('jade', themeResources+'jade', public_path));
     gulp.task('global-images', getTask('imgs', elixir.config.assetsPath+'/images', public_path));
     gulp.task('global-locales', getTask('lang', elixir.config.assetsPath+'/resources', public_path))
@@ -116,5 +116,3 @@ elixir(function(mix) {
             "libs/console.sham.js"
         ], public_path+'assets/js/libs.js')
 });
-
-

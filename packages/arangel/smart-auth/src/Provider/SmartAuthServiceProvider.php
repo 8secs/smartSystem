@@ -16,6 +16,11 @@ class SmartAuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (! $this->app->routesAreCached()) {
+
+            require __DIR__.'/../Http/routes.php';
+        }
+
         $this->publishes([
             __DIR__.'/../Database/migrations/' => database_path('migrations')
         ], 'migrations');
@@ -32,10 +37,11 @@ class SmartAuthServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        include __DIR__.'/../Http/routes.php';
+        //include __DIR__.'/../Http/routes.php';
 
         $this->app->make('Arangel\SmartAuth\Http\Controllers\AuthController');
         $this->app->make('Arangel\SmartAuth\Http\Controllers\UserController');
+        //$this->app->make('Arangel\SmartAuth\Http\Middleware\Authenticate');
 
     }
 
