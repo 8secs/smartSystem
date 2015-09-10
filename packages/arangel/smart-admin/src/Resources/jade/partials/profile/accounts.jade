@@ -1,0 +1,52 @@
+.tabs-content(ng-if='!editUser')
+    .btn-toolbar
+        button.btn.btn-sm.btn-danger(ng-if='user.facebook', ng-click="unlink('facebook')")
+            i.ion-social-facebook
+            |  Unlink Facebook Account
+        button.btn.btn-sm.btn-primary(ng-if='!user.facebook', ng-click="link('facebook')")
+            i.ion-social-facebook
+            |  Link Facebook Account
+        button.btn.btn-sm.btn-danger(ng-if='user.google', ng-click="unlink('google')")
+            i.ion-social-googleplus
+            |  Unlink Google Account
+        button.btn.btn-sm.btn-primary(ng-if='!user.google', ng-click="link('google')")
+            i.ion-social-googleplus
+            |  Link Google Account
+        button.btn.btn-sm.btn-danger(ng-if='user.linkedin', ng-click="unlink('linkedin')")
+            i.ion-social-linkedin
+            |  Unlink LinkedIn Account
+        button.btn.btn-sm.btn-primary(ng-if='!user.linkedin', ng-click="link('linkedin')")
+            i.ion-social-linkedin
+            |  Link LinkedIn Account
+        button.btn.btn-sm.btn-danger(ng-if='user.twitter', ng-click="unlink('twitter')")
+            i.ion-social-twitter
+            |  Unlink Twitter Account
+        button.btn.btn-sm.btn-primary(ng-if='!user.twitter', ng-click="link('twitter')")
+            i.ion-social-twitter
+            |  Link Twitter Account
+        .clear
+        .btn-toolbar
+            button.btn.btn-sm.btn-danger(ng-if='user.github', ng-click="unlink('github')")
+                i.ion-social-github
+                |  Unlink GitHub Account
+            button.btn.btn-sm.btn-primary(ng-if='!user.github', ng-click="link('github')")
+                i.ion-social-github
+                |  Link GitHub Account
+            button.btn.btn-sm.btn-danger(ng-if='user.foursquare', ng-click="unlink('foursquare')")
+                i.ion-social-foursquare
+                |  Unlink Foursquare Account
+            button.btn.btn-sm.btn-primary(ng-if='!user.foursquare', ng-click="link('foursquare')")
+                i.ion-social-foursquare
+                |  Link Foursquare Account
+            button.btn.btn-sm.btn-danger(ng-if='user.yahoo', ng-click="unlink('yahoo')")
+                i.ion-social-yahoo
+                |  Unlink Yahoo Account
+            button.btn.btn-sm.btn-primary(ng-if='!user.yahoo', ng-click="link('yahoo')")
+                i.ion-social-yahoo
+                |  Link Yahoo Account
+            button.btn.btn-sm.btn-danger(ng-if='user.live', ng-click="unlink('live')")
+                i.ion-social-windows
+                |  Unlink Windows Live Account
+            button.btn.btn-sm.btn-primary(ng-if='!user.live', ng-click="link('live')")
+                i.ion-social-windows
+                |  Link Windows Live Account

@@ -1,0 +1,50 @@
+
+<section class="content-header">
+  <h1>Users<small>Users list</small>
+    <ol class="breadcrumb">
+      <li><a href="#" ui-sref="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="#" ui-sref="users"><i class="fa fa-users"></i>Users</a></li>
+    </ol>
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
+  </h1>
+  <!-- Main content-->
+  <section class="content">
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">Users</h3>
+        <div class="box-tools pull-right">
+          <!-- Buttons, labels, and many other things can be placed here!-->
+          <!-- Here is a label for example--><span class="label label-primary">Label</span>
+        </div>
+        <!-- /.box-tools-->
+      </div>
+      <!-- /.box-header-->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <table ng-table="tableParams" show-filter="true" class="ui table">
+              <tr ng-repeat="user in users">
+                <td style="width: 52px;"><img check-image="" ng-src="uploads/{{user.image}}" width="48"/></td>
+                <td data-title="'Display Name'" sortable="'displayName'" filter="{'displayName' : 'text'}">{{user.displayName}}</td>
+                <td data-title="'Email'" sortable="'email'" filter="{ 'email': 'text' }">{{user.email}}</td>
+                <td data-title="'Actions'" width="150" class="text-center"><a href="" ui-sref="edit-user({userID: user.id, editUser: true})" class="btn btn-warning btn-xs">Edit</a>
+                  <!-- <a href="" ng-click="deleteUser(user.id)" class="btn btn-danger btn-xs">Delete</a>--><a href="" ng-click="showModal('user', user.id)" data-animation="am-fade-and-slide-top" class="btn btn-danger btn-xs">Delete</a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- /.box-body-->
+      <div class="box-footer">
+        <div class="row">
+          <div class="col-md-6"><strong>Page:</strong> {{tableParams.page()}}</div>
+          <div class="col-md-6 text-right"><strong>Count per page:</strong> {{tableParams.count()}}</div>
+        </div>
+      </div>
+      <!-- box-footer-->
+    </div>
+    <!-- /.box-->
+  </section>
+  <!-- /.content-->
+</section>

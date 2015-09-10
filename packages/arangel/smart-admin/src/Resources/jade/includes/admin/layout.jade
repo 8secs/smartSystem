@@ -1,0 +1,27 @@
+header.header(ui-view='header')
+    .wrapper.row-offcanvas.row-offcanvas-left
+        // Left side column. contains the logo and sidebar
+        aside.left-side.sidebar-offcanvas
+            // sidebar: style can be found in sidebar.less
+            section.sidebar(ui-view='sidebar')
+            // /.sidebar
+        // Right side column. Contains the navbar and content of the page
+        aside.right-side
+            // Content Header (Page header)
+            section.content-header
+                h1
+                    | {{title}}
+                    small {{subtitle}}
+                ol.breadcrumb
+                    li
+                        a(href='#')
+                            i.fa.fa-dashboard
+                            |  Home
+                    li
+                        a(href='#') Examples
+                    li.active Blank page
+            // Main content
+            section.content(ui-view='')
+            // /.content
+        // /.right-side
+        // ./wrapper

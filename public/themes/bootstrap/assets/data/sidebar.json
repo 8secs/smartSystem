@@ -1,0 +1,32 @@
+{
+    "sidebar": [
+        {
+            "class": "fa fa-dashboard",
+            "state": "dashboard",
+            "text": "Dashboard"
+        },
+        {
+            "class": "fa fa-lock",
+            "text": "Security",
+            "children": [
+                {
+                    "class": "fa fa-users",
+                    "state": "users",
+                    "text": "Users"
+                },
+                {
+                    "class": "fa fa-certificate",
+                    "state": "roles",
+                    "text": "Roles"
+                }]
+        },
+        {
+        "class": "fa fa-envelope",
+        "state": "mailbox",
+        "text": "Mailbox",
+        "badge": {
+            "color": "green",
+            "text": "new"
+        }
+    }]
+}

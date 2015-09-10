@@ -1,0 +1,144 @@
+.tabs-content
+    .clear
+        .box.box-primary
+            .box-header.with-border
+                .box-title
+                    h3 Basic Information
+                .box-tools.pull-right
+                    button.btn.btn-box-tool(data-widget='collapse', data-toggle='tooltip', title='Collapse')
+                        i.fa.fa-minus
+            form(method='post', ng-submit='updateUser(userProfile.user)')
+                .box-body
+                    .row(style='padding: 20px;')
+                        .col-md-3.file-image
+                            img#img.thumbnail(check-image='', ng-src='{{userProfile.image}}', width='200')
+                        #file.dropzone.col-md-8(file-dropzone='[image/png, image/jpeg, image/gif]', file='userProfile.image', file-name='imageFileName', data-max-file-size='1')
+                            i.fa.fa-upload
+                            span Drop Profile Image Here
+                    .form-group
+                        label.control-label
+                            i.fa.fa-user
+                            |  Display Name
+                        input.form-control(ng-if='!editUser', type='text', ng-model='userProfile.user.displayName')
+                        input.form-control(ng-if='editUser', type='text', ng-model='userProfile.user.displayName', readonly='')
+                    .form-group
+                        label.control-label
+                            i.fa.fa-envelope
+                            |  Email Address
+                        input.form-control(ng-if='!editUser', type='email', ng-model='userProfile.user.email')
+                        input.form-control(ng-if='editUser', type='email', ng-model='userProfile.user.email', readonly='')
+                    .form-group(ng-if='editUser')
+                        label.control-label
+                            i.fa.fa-certificate
+                            |  Roles
+                        br
+                        multiselect(ng-model='userProfile.user_roles', options='r.display_name for r in roles', data-multiple='true', scroll-after-rows='5', data-compare-by='id', change='selected()')
+                    .form-group(ng-if='!editUser')
+                        label.control-label
+                            i.fa.fa-certificate
+                            |  Roles
+                        br
+                        ul(ng-repeat='role in userProfile.user_roles')
+                            li {{role.display_name}}
+                .box-footer
+                    .col-sm-10
+                        button.btn.btn-danger(type='submit') Submit
+        .clear
+        .box.box-info
+            .box-header.with-border
+                .box-title
+                    h3 About me
+                .box-tools.pull-right
+                    button.btn.btn-box-tool(data-widget='collapse', data-toggle='tooltip', title='Collapse')
+                        i.fa.fa-minus
+            form(method='post')
+                .box-body
+                    input.form-control(type='hidden', ng-model='userProfile.about.user_id')
+                    .form-group
+                        label.control-label
+                            i.fa.fa-cubes
+                            |  Job position
+                        input.form-control(ng-if='!editUser', type='text', ng-model='userProfile.about.position')
+                        input.form-control(ng-if='editUser', type='text', ng-model='userProfile.about.position', readonly='')
+                    .form-group
+                        label.control-label
+                            i.fa.fa-book
+                            |  Education
+                        input.form-control(ng-if='!editUser', type='text', ng-model='userProfile.about.education')
+                        input.form-control(ng-if='editUser', type='text', ng-model='userProfile.about.education', readonly='')
+                    .form-group
+                        label.control-label
+                            i.fa.fa-user
+                            |  About me
+                        textarea.form-control(ng-if='!editUser', type='text', ng-model='userProfile.about.about_me')
+                        textarea.form-control(ng-if='editUser', type='text', ng-model='userProfile.about.about_me', readonly='')
+                .box-footer
+                    .col-sm-10
+                        button.btn.btn-danger(ng-if='!userProfile.about.user_id', type='submit', ng-click='storeProfile(userProfile.about)') Submit
+                        button.btn.btn-danger(ng-if='userProfile.about.user_id', type='submit', ng-click='updateProfile(userProfile.about)') Submit
+        .clear
+        .box.box-warning
+            .box-header.with-border
+                .box-title
+                    h3 Your Location
+                .box-tools.pull-right
+                    button.btn.btn-box-tool(data-widget='collapse', data-toggle='tooltip', title='Collapse')
+                        i.fa.fa-minus
+            .box-body
+                table.ui.table(show-filter='true')
+                    tbody
+                        tr
+                            th Full Street
+                            th City
+                            th Post Code
+                            th Country
+                            th.text-center Actions
+                    tr(ng-repeat='loc in userProfile.user.locations')
+                        td(data-title="'Full Street'") {{loc.address}}
+                        td(data-title="'City'") {{loc.city}}
+                        td(data-title="'Post Code'") {{loc.postCode}}
+                        td(data-title="'Country'") {{loc.country}}
+                        td.text-center(data-title="'Actions'", width='150')
+                            a.btn.btn-warning.btn-xs(href='', ng-click='editLocation(loc)') Edit
+                            // <a href="" ng-click="deleteUser(user.id)" class="btn btn-danger btn-xs">Delete</a>
+                            a.btn.btn-danger.btn-xs(href='', ng-click="showModal('location', loc.id)", data-animation='am-fade-and-slide-top') Delete
+                .clear
+                form(method='post', ng-show='!address.Id')
+                    .form-group
+                        label.control-label
+                            i.fa.fa-map-marker
+                            |  Insert your address
+                        google-places.form-control(address='address', ng-model='address', required='', placeholder='Street', value='Street')
+                div(ng-show='address')
+                    form(method='post')
+                        input.form-control(type='hidden', ng-model='address.Latitude')
+                        input.form-control(type='hidden', ng-model='address.Longitude')
+                        input.form-control(type='hidden', ng-model='address.Id')
+                        .form-group
+                            label.control-label
+                                i.fa.fa-home
+                                |  Full Address
+                            input.form-control(type='text', ng-model='address.FormattedAddress', placeholder='Full Address')
+                        .form-group
+                            label.control-label
+                                i.fa.fa-home
+                                |  Street
+                            input.form-control(type='text', ng-model='address.Street', placeholder='Street')
+                        .form-group
+                            label.control-label
+                                i.fa.fa-home
+                                |  City
+                            input.form-control(type='text', ng-model='address.City', placeholder='City')
+                        .form-group
+                            label.control-label
+                                i.fa.fa-home
+                                |  Country
+                            input.form-control(type='text', ng-model='address.Country', placeholder='Country')
+                        .form-group
+                            label.control-label
+                                i.fa.fa-home
+                                |  Postal Code
+                            input.form-control(type='text', ng-model='address.PostCode', placeholder='Postal Code')
+                        .form-group
+                            button.btn.btn-danger(ng-show='!address.Id', type='submit', ng-click='storeLocation(address)') Submit
+                            button.btn.btn-danger(ng-show='address.Id', type='submit', ng-click='updateLocation(address)') Submit

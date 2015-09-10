@@ -1,0 +1,156 @@
+
+<div class="tabs-content">
+  <div class="clear">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <div class="box-title">
+          <h3>Basic Information</h3>
+        </div>
+        <div class="box-tools pull-right">
+          <button data-widget="collapse" data-toggle="tooltip" title="Collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+        </div>
+      </div>
+      <form method="post" ng-submit="updateUser(userProfile.user)">
+        <div class="box-body">
+          <div style="padding: 20px;" class="row">
+            <div class="col-md-3 file-image"><img id="img" check-image="" ng-src="{{userProfile.image}}" width="200" class="thumbnail"/></div>
+            <div id="file" file-dropzone="[image/png, image/jpeg, image/gif]" file="userProfile.image" file-name="imageFileName" data-max-file-size="1" class="dropzone col-md-8"><i class="fa fa-upload"></i><span>Drop Profile Image Here</span></div>
+          </div>
+          <div class="form-group">
+            <label class="control-label"><i class="fa fa-user"></i> Display Name</label>
+            <input ng-if="!editUser" type="text" ng-model="userProfile.user.displayName" class="form-control"/>
+            <input ng-if="editUser" type="text" ng-model="userProfile.user.displayName" readonly="" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label class="control-label"><i class="fa fa-envelope"></i> Email Address</label>
+            <input ng-if="!editUser" type="email" ng-model="userProfile.user.email" class="form-control"/>
+            <input ng-if="editUser" type="email" ng-model="userProfile.user.email" readonly="" class="form-control"/>
+          </div>
+          <div ng-if="editUser" class="form-group">
+            <label class="control-label"><i class="fa fa-certificate"></i> Roles</label><br/>
+            <multiselect ng-model="userProfile.user_roles" options="r.display_name for r in roles" data-multiple="true" scroll-after-rows="5" data-compare-by="id" change="selected()"></multiselect>
+          </div>
+          <div ng-if="!editUser" class="form-group">
+            <label class="control-label"><i class="fa fa-certificate"></i> Roles</label><br/>
+            <ul ng-repeat="role in userProfile.user_roles">
+              <li>{{role.display_name}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="box-footer">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-danger">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="clear"></div>
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <div class="box-title">
+          <h3>About me</h3>
+        </div>
+        <div class="box-tools pull-right">
+          <button data-widget="collapse" data-toggle="tooltip" title="Collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+        </div>
+      </div>
+      <form method="post">
+        <div class="box-body">
+          <input type="hidden" ng-model="userProfile.about.user_id" class="form-control"/>
+          <div class="form-group">
+            <label class="control-label"><i class="fa fa-cubes"></i> Job position</label>
+            <input ng-if="!editUser" type="text" ng-model="userProfile.about.position" class="form-control"/>
+            <input ng-if="editUser" type="text" ng-model="userProfile.about.position" readonly="" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label class="control-label"><i class="fa fa-book"></i> Education</label>
+            <input ng-if="!editUser" type="text" ng-model="userProfile.about.education" class="form-control"/>
+            <input ng-if="editUser" type="text" ng-model="userProfile.about.education" readonly="" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label class="control-label"><i class="fa fa-user"></i> About me</label>
+            <textarea ng-if="!editUser" type="text" ng-model="userProfile.about.about_me" class="form-control"></textarea>
+            <textarea ng-if="editUser" type="text" ng-model="userProfile.about.about_me" readonly="" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="box-footer">
+          <div class="col-sm-10">
+            <button ng-if="!userProfile.about.user_id" type="submit" ng-click="storeProfile(userProfile.about)" class="btn btn-danger">Submit</button>
+            <button ng-if="userProfile.about.user_id" type="submit" ng-click="updateProfile(userProfile.about)" class="btn btn-danger">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="clear"></div>
+    <div class="box box-warning">
+      <div class="box-header with-border">
+        <div class="box-title">
+          <h3>Your Location</h3>
+        </div>
+        <div class="box-tools pull-right">
+          <button data-widget="collapse" data-toggle="tooltip" title="Collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <table show-filter="true" class="ui table">
+          <tbody>
+            <tr>
+              <th>Full Street</th>
+              <th>City</th>
+              <th>Post Code</th>
+              <th>Country</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </tbody>
+          <tr ng-repeat="loc in userProfile.user.locations">
+            <td data-title="'Full Street'">{{loc.address}}</td>
+            <td data-title="'City'">{{loc.city}}</td>
+            <td data-title="'Post Code'">{{loc.postCode}}</td>
+            <td data-title="'Country'">{{loc.country}}</td>
+            <td data-title="'Actions'" width="150" class="text-center"><a href="" ng-click="editLocation(loc)" class="btn btn-warning btn-xs">Edit</a>
+              <!-- <a href="" ng-click="deleteUser(user.id)" class="btn btn-danger btn-xs">Delete</a>--><a href="" ng-click="showModal('location', loc.id)" data-animation="am-fade-and-slide-top" class="btn btn-danger btn-xs">Delete</a>
+            </td>
+          </tr>
+        </table>
+        <div class="clear"></div>
+        <form method="post" ng-show="!address.Id">
+          <div class="form-group">
+            <label class="control-label"><i class="fa fa-map-marker"></i> Insert your address</label>
+            <google-places address="address" ng-model="address" required="" placeholder="Street" value="Street" class="form-control"></google-places>
+          </div>
+        </form>
+        <div ng-show="address">
+          <form method="post">
+            <input type="hidden" ng-model="address.Latitude" class="form-control"/>
+            <input type="hidden" ng-model="address.Longitude" class="form-control"/>
+            <input type="hidden" ng-model="address.Id" class="form-control"/>
+            <div class="form-group">
+              <label class="control-label"><i class="fa fa-home"></i> Full Address</label>
+              <input type="text" ng-model="address.FormattedAddress" placeholder="Full Address" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label class="control-label"><i class="fa fa-home"></i> Street</label>
+              <input type="text" ng-model="address.Street" placeholder="Street" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label class="control-label"><i class="fa fa-home"></i> City</label>
+              <input type="text" ng-model="address.City" placeholder="City" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label class="control-label"><i class="fa fa-home"></i> Country</label>
+              <input type="text" ng-model="address.Country" placeholder="Country" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label class="control-label"><i class="fa fa-home"></i> Postal Code</label>
+              <input type="text" ng-model="address.PostCode" placeholder="Postal Code" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <button ng-show="!address.Id" type="submit" ng-click="storeLocation(address)" class="btn btn-danger">Submit</button>
+              <button ng-show="address.Id" type="submit" ng-click="updateLocation(address)" class="btn btn-danger">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
