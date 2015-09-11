@@ -1,13 +1,12 @@
 (function(){
     'use strict';
 
-    angular.module('Admin')
+    angular.module('adminsys')
         .directive('adminLteSidebarToggle', function(){
 
             return {
                 restrict: 'A',
-                link: link,
-                scope: {}
+                link: link
             };
 
             function link($scope, $element, $attrs) {

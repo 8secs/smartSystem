@@ -1,13 +1,12 @@
 (function(){
     'use strict';
 
-    angular.module('Admin')
+    angular.module('adminsys')
         .directive('adminLteLayout', function(){
             console.log("adminLteLayout");
             return {
                 restrict: 'A',
-                link: link,
-                scope: {}
+                link: link
             };
 
             function link($scope, $element, $attrs) {

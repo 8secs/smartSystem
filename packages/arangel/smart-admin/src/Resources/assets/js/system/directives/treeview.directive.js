@@ -2,14 +2,13 @@
 
     'use strict';
 
-    angular.module('Admin')
+    angular.module('adminsys')
 
         .directive('adminLteTree', [function() {
             console.log("adminLteTree");
             return {
                 restrict: '',
-                link: link,
-                scope: {}
+                link: link
             };
 
             function link($scope, $element, $attrs) {

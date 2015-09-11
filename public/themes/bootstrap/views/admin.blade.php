@@ -6,7 +6,6 @@
 <body class="hold-transition sidebar-mini skin-blue-light">
 <base href="/">
 
-
 <div class="preload">
     <div ui-view></div>
 </div>
@@ -21,12 +20,14 @@
         activeTheme: '{{$theme}}'
     };
 </script>
+
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 <script src="{{ Theme::asset('bootstrap::js/scripts.js') }}"></script>
-<script src="{{ Theme::asset('bootstrap::js/auth-scripts.js') }}"></script>
-<script src="{{ Theme::asset('bootstrap::js/admin-scripts.js') }}"></script>
-<script src="{{ Theme::asset('bootstrap::js/app.js') }}"></script>
 
+<script src="{{ Theme::asset('bootstrap::js/auth-scripts.js') }}"></script>
+
+<script src="{{ Theme::asset('bootstrap::js/app.js') }}"></script>
+<script src="{{ Theme::asset('bootstrap::js/admin-scripts.js') }}"></script>
 <script src="{{ Theme::asset('bootstrap::js/controllers.js') }}"></script>
 <script src="{{ Theme::asset('bootstrap::js/directives.js') }}"></script>
 <script src="{{ Theme::asset('bootstrap::js/services.js') }}"></script>

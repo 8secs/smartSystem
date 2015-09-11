@@ -1,8 +1,12 @@
 (function(){
     'use strict';
 
-    angular.module('Admin')
-        .controller('DashboardCtrl', function($scope, Account, $state, alertService, ProfileService){
+    angular.module('adminsys')
+        .controller('dashboardCtrl', function($scope,
+                                              Account,
+                                              $state,
+                                              alertService,
+                                              ProfileService){
 
             $scope.alerts = alertService.get();
 

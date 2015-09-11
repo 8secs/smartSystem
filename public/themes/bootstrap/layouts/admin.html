@@ -1,14 +1,14 @@
 
-<div admin-lte-layout="" class="wrapper">
-  <div ng-controller="AdminCtrl">
+<div admin-lte-layout="admin-lte-layout" class="wrapper">
+  <div ng-controller="adminCtrl">
     <header ui-view="header" class="main-header"></header>
     <aside class="main-sidebar">
-      <section ui-view="sidebar" admin-lte-sidebar-toggle-swipe="" class="sidebar"></section>
+      <section ui-view="sidebar" admin-lte-sidebar-toggle-swipe="admin-lte-sidebar-toggle-swipe" class="sidebar"></section>
     </aside>
     <div ui-view="" class="content-wrapper"></div>
     <footer ui-view="footer" class="main-footer"></footer>
     <!-- Control Sidebar-->
-    <aside ui-view="control" admin-lte-control-sidebar="" class="control-sidebar control-sidebar-light"></aside>
+    <aside ui-view="control" admin-lte-control-sidebar="admin-lte-control-sidebar" class="control-sidebar control-sidebar-light"></aside>
     <!--
     Add the sidebar's background. This div must be placed
     immediately after the control sidebar

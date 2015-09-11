@@ -29,6 +29,7 @@ var paths = {
     'satellizer' : './vendor/bower_components/satellizer/',
     'adminLTE' : './vendor/bower_components/admin-lte/',
     'angularGoogleMaps':  './vendor/bower_components/angular-google-maps/',
+    'angularSimpleLogger':  './vendor/bower_components/angular-simple-logger/',
     'lodash': './vendor/bower_components/lodash/',
     'ngTable' : './vendor/bower_components/ng-table/',
     'angularBootstrapMultiselect' : './vendor/bower_components/angular-bootstrap-multiselect/'
@@ -60,6 +61,7 @@ function getGlobalScripts(){
         paths.adminLTE + 'dist/js/app.js',
         paths.lodash + 'lodash.min.js',
         paths.angularGoogleMaps + 'dist/angular-google-maps_dev_mapped.js',
+        paths.angularSimpleLogger + 'dist/index.js',
         paths.angularBootstrapMultiselect + 'angular-bootstrap-multiselect.js',
         paths.ngTable + 'dist/ng-table.min.js'
     ];

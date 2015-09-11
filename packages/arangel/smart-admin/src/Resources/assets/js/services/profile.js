@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    angular.module('Admin')
+    angular.module('adminsys')
         .service('ProfileService', function(Account, $q, $log, alertService){
 
             return {

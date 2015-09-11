@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    angular.module('Admin')
+    angular.module('adminsys')
         .directive('googlePlaces', function(){
             var componentForm = {
                 premise: 'long_name',

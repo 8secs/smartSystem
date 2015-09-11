@@ -27,6 +27,15 @@ Route::group([
             return Theme::view('default', ['theme' => $theme, 'title' => $title]);
         });
 
+        Route::get('/dashboard', function() {
+            /**
+             * TODO: estas variables tienen que venir en un futuro de bbdd
+             */
+            $theme = Theme::getActive();
+            $title = "Admin Smart System";
+            return Theme::view('admin', ['theme' => $theme, 'title' => $title]);
+        });
+
         Route::get('getSopportedLocales', function(){
             return response()->json(
                 [

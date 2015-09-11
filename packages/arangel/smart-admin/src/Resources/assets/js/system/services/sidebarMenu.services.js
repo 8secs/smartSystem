@@ -1,26 +1,14 @@
-'use strict';
-
 (function() {
+    'use strict';
 
-    function sidebarMenuService($http) {
-        function getSidebar() {
-            return $http.get('assets/data/sidebar.json');
-        }
+    angular.module('adminsys')
+        .factory('sidebarMenuService', function($http, $rootScope){
 
+            return {
+                getSidebar: function(){
+                    return $http.get('themes/'+$rootScope.config.activeTheme+'/assets/data/sidebar.json');
+                }
+            };
 
-        return {
-            getSidebar: getSidebar
-        };
-
-
-    }
-
-    sidebarMenuService.$inject = ['$http'];
-
-
-    angular.module('Admin')
-
-        .service('sidebarMenuService', sidebarMenuService);
-
-
+        });
 })();

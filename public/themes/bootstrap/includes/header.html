@@ -22,7 +22,7 @@
       <ul ng-show="isAuthenticated()" class="nav navbar-nav pull-right">
         <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">{{currentLocale}}</a>
           <ul role="menu" class="dropdown-menu">
-            <li ng-repeat="locale in sopportedLocales"><a href="{{key}}">{{locale.name}}</a></li>
+            <li ng-repeat="(key, data) in sopportedLocales"><a href="{{key}}">{{data.native}}</a></li>
           </ul>
         </li>
         <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><img check-image="" ng-src="{{userProfile.image}}" width="24" class="navbar-image-profile"/>{{userProfile.user.displayName}}</a>

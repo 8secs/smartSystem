@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    angular.module('Admin')
+    angular.module('adminsys')
         .controller('RoleCtrl', function ($scope, alertService, $state, $stateParams, Role, ngTableParams){
 
             $scope.alerts = alertService.get();

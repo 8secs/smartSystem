@@ -2,7 +2,6 @@
     'use strict';
 
     angular.module('auth')
-
         .controller('AuthCtrl', function($rootScope,
                                          $state,
                                          $stateParams,

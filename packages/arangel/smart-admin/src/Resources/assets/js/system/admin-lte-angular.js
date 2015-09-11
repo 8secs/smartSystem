@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('Admin', [])
+        .module('adminsys', [])
         .directive('adminLteLayout', adminLteLayoutDirective)
         .directive('adminLteTree', adminLteTreeDirective)
         .directive('adminLteSidebarToggle', adminLteSidebarToggleDirective)

@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    angular.module('Admin')
+    angular.module('adminsys')
         .factory('Role', function($http){
             return {
                 getRoles: function() {

@@ -39,5 +39,8 @@
     "angular-google-maps": "~2.2.0",
     "ng-table": "~0.8.3",
     "angular-bootstrap-multiselect": "~0.3.3"
+  },
+  "devDependencies": {
+    "angular-simple-logger": "~0.0.1"
   }
 }

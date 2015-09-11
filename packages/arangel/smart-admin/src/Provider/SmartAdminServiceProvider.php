@@ -25,6 +25,8 @@ class SmartAdminServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../Resources/data/' => public_path('themes/'. Theme::getActive() . '/assets/data'),
         ], 'data');
+
+        $this->publishes([__DIR__ . '/../Resources/Views/' => public_path('themes/') . Theme::getActive() . '/views/', ], 'views');
     }
 
     /**
