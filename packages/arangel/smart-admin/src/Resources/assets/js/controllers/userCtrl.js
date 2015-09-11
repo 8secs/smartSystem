@@ -8,7 +8,7 @@
         .controller('UserCtrl', function ($scope, $state, $stateParams, alertService, $modal, User, $filter, ngTableParams){
 
             $scope.panes = [
-                {title: "Settings", content: "partials/account/profile/settings.html", active:true},
+                {title: "Settings", content: "partials/account/profile/settings.html", active:true}
             ];
 
             $scope.alerts = alertService.get();
