@@ -1,13 +1,13 @@
 (function(){
     'use strict';
 
-    angular.module('adminsys')
-        .service('ProfileService', function(Account, $q, $log, alertService){
+    adminModule
+        .service('AdminProfile', function(AdminAccount, $q, $log, alertService){
 
             return {
                 getUserLocationByIp: function(){
                     var deferred = $q.defer();
-                    Account.getIpInfo()
+                    AdminAccount.getIpInfo()
                         .then(function(response){
                             var ip = response.data.ip;
                             var hostname = response.data.hostname;
@@ -28,10 +28,10 @@
                             alertService.add('error', "Request fail. Error from Server code: " + response.status);
                         });
                     return deferred.promise;
-                }/*,
+                },
                 getUser: function(){
                     var deferred = $q.defer();
-                    Account.getUser()
+                    AdminAccount.getUser()
                         .then(
                         function(response){
                             var data = response.data;
@@ -48,10 +48,10 @@
                             alertService.add('error', "Request fail. Error server code: " + response.status);
                         });
                     return deferred.promise;
-                }*/,
+                },
                 updateUser: function(data){
                     var deferred = $q.defer();
-                    Account.updateUser(data)
+                    AdminAccount.updateUser(data)
                         .then(function(response){
                             alertService.add('success', 'User updated.');
 
@@ -65,7 +65,7 @@
                 },
                 storeProfile: function(data){
                     var deferred = $q.defer();
-                    Account.storeProfile(data)
+                    AdminAccount.storeProfile(data)
                         .then(function(response){
                             alertService.add('success', "User's Profile has been update.");
 
@@ -77,7 +77,7 @@
                 },
                 updateProfile: function(data){
                     var deferred = $q.defer();
-                    Account.updateProfile(data)
+                    AdminAccount.updateProfile(data)
                         .then(function(response){
                             alertService.add('success', "User's Profile has been update.");
 
@@ -89,7 +89,7 @@
                 },
                 getFriends: function(){
                     var deferred = $q.defer();
-                    Account.getFriends()
+                    AdminAccount.getFriends()
                         .then(function(response){
                             var data = response.data;
                             deferred.resolve({
@@ -104,7 +104,7 @@
                 },
                 getFollowees: function(){
                     var deferred = $q.defer();
-                    Account.getFollowees()
+                    AdminAccount.getFollowees()
                         .then(function(response){
                             var data = response.data;
                             var users = data.users;
@@ -129,7 +129,7 @@
                 },
                 getFollowers: function(){
                     var deferred = $q.defer();
-                    Account.getFollowers()
+                    AdminAccount.getFollowers()
                         .then(function(response){
                             var data = response.data;
                             deferred.resolve({
@@ -144,7 +144,7 @@
                 },
                 addFriend: function(id){
                     var deferred = $q.defer();
-                    Account.addFriend(id)
+                    AdminAccount.addFriend(id)
                         .then(function(response){
                             deferred.resolve({
                                 success: response.status
@@ -158,7 +158,7 @@
                 },
                 removeFriend: function(id){
                     var deferred = $q.defer();
-                    Account.removeFriend(id)
+                    AdminAccount.removeFriend(id)
                         .then(function(response){
                             deferred.resolve({
                                 success: response.status
@@ -172,7 +172,7 @@
                 },
                 addFollowee: function(id){
                     var deferred = $q.defer();
-                    Account.addFollowee(id)
+                    AdminAccount.addFollowee(id)
                         .then(function(response){
                             deferred.resolve({
                                 success: response.status
@@ -186,7 +186,7 @@
                 },
                 removeFollowee: function(id){
                     var deferred = $q.defer();
-                    Account.removeFollowee(id)
+                    AdminAccount.removeFollowee(id)
                         .then(function(response){
                             deferred.resolve({
                                 success: response.status
@@ -200,7 +200,7 @@
                 },
                 storeLocation: function(data){
                     var deferred = $q.defer();
-                    Account.storeLocation(data)
+                    AdminAccount.storeLocation(data)
                         .then(function(response){
                             deferred.resolve({
                                 address: response.data
@@ -214,7 +214,7 @@
                 },
                 updateLocation: function(data){
                     var deferred = $q.defer();
-                    Account.updateLocation(data)
+                    AdminAccount.updateLocation(data)
                         .then(function(response){
                             var data = response.data;
                             deferred.resolve({

@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    angular.module('adminsys')
+    adminModule
         .directive('adminLteLayout', function(){
             console.log("adminLteLayout");
             return {

@@ -13,6 +13,7 @@
             'uiGmapgoogle-maps',
             'adminsys',
             'auth'])
+
         .run(function($rootScope){
             $rootScope.config = _config;
         })
@@ -48,7 +49,7 @@
                 })
                 .state('admin',{
                     abstract: true,
-                    resolve: {
+                    /*resolve: {
                         authenticated: function($q, $location, $auth) {
                             var deferred = $q.defer();
                             if (!$auth.isAuthenticated()) {
@@ -60,7 +61,7 @@
                             }
                             return deferred.promise;
                         }
-                    },
+                    },*/
                     views: {
                         '@' : {
                             templateUrl: 'themes/bootstrap/layouts/admin.html'
@@ -83,6 +84,7 @@
                 .state('dashboard',{
                     url: '/dashboard',
                     templateUrl: 'themes/bootstrap/partials/admin/dashboard.html',
+                    controller: 'dashboardCtrl',
                     parent: 'admin'
                 })
             ;

@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    angular.module('adminsys')
+    adminModule
         .directive('adminLteControlSidebar', function(){
             console.log("adminLteControlSidebar");
             return {
@@ -24,9 +24,11 @@
                 function toggleSidebar() {
                     //If the sidebar is not open
                     if (!_this.sidebar.hasClass('control-sidebar-open') && !$('body').hasClass('control-sidebar-open')) {
+                        console.log("toggleSidebar");
                         //Open the sidebar
                         open(_this.sidebar, true);
                     } else {
+                        console.log("toggleSidebar close");
                         close(_this.sidebar, true);
                     }
                 }

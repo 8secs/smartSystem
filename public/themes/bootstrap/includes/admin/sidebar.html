@@ -1,24 +1,23 @@
 
 <div class="user-panel">
-  <div class="pull-left image"><img check-image="" ng-src="{{userProfile.image}}" alt="User Image" class="user-image"/>
-    <div class="pull-left info">
-      <p>{{userProfile.user.displayName}}</p>
-      <!-- Status--><a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-    </div>
+  <div class="pull-left image"><img check-image="" ng-src="{{userProfile.image}}" alt="User Image" class="user-image"/></div>
+  <div class="pull-left info">
+    <p>{{userProfile.user.displayName}}</p>
+    <!-- Status--><a href="#"><i class="fa fa-circle text-success"></i> Online</a>
   </div>
-  <!-- search form (Optional)-->
-  <form action="#" method="get" class="sidebar-form">
-    <div class="input-group">
-      <input type="text" name="q" placeholder="Search..." class="form-control"/><span class="input-group-btn">
-        <button id="search-btn" type="submit" name="search" class="btn btn-flat"><i class="fa fa-search"></i></button></span>
-    </div>
-  </form>
-  <!-- /.search form-->
-  <ul class="sidebar-menu">
-    <li ng-repeat="menu in menus" ng-class="{'treeview': menu.children}" treeview="" istreeview="{{menu.children}}"><a href="#" ui-sref="{{menu.state}}" ng-if="menu.state"><i class="{{menu.class}}"></i><span>{{menu.text}}</span><small ng-if="menu.badge" class="badge pull-right bg-{{menu.badge.color || green}}">{{menu.badge.text}}</small></a><a href="#" ng-if="!menu.state &amp;&amp; isAdmin()"><i class="{{menu.class}}"></i><span>{{menu.text}}</span><i ng-if="!menu.badge" class="fa fa-angle-left pull-right"></i><small ng-if="menu.badge" class="badge pull-right bg-{{menu.badge.color || green}}">{{menu.badge.text}}</small></a>
-      <ul ng-if="menu.children &amp;&amp; isAdmin()" class="treeview-menu">
-        <li ng-repeat="child in menu.children"><a href="#" ui-sref="{{child.state}}"><i class="{{child.class}}"></i>{{child.text}}</a></li>
-      </ul>
-    </li>
-  </ul>
 </div>
+<!-- search form (Optional)-->
+<form action="#" method="get" class="sidebar-form">
+  <div class="input-group">
+    <input type="text" name="q" placeholder="Search..." class="form-control"/><span class="input-group-btn">
+      <button id="search-btn" type="submit" name="search" class="btn btn-flat"><i class="fa fa-search"></i></button></span>
+  </div>
+</form>
+<!-- /.search form-->
+<ul class="sidebar-menu">
+  <li ng-repeat="menu in menus" ng-class="{'treeview': menu.children}" treeview="" istreeview="{{menu.children}}"><a href="#" ui-sref="{{menu.state}}" ng-if="menu.state"><i class="{{menu.class}}"></i><span>{{menu.text}}</span><small ng-if="menu.badge" class="badge pull-right bg-{{menu.badge.color || green}}">{{menu.badge.text}}</small></a><a href="#" ng-if="!menu.state &amp;&amp; isAdmin()"><i class="{{menu.class}}"></i><span>{{menu.text}}</span><i ng-if="!menu.badge" class="fa fa-angle-left pull-right"></i><small ng-if="menu.badge" class="badge pull-right bg-{{menu.badge.color || green}}">{{menu.badge.text}}</small></a>
+    <ul ng-if="menu.children &amp;&amp; isAdmin()" class="treeview-menu">
+      <li ng-repeat="child in menu.children"><a href="#" ui-sref="{{child.state}}"><i class="{{child.class}}"></i>{{child.text}}</a></li>
+    </ul>
+  </li>
+</ul>

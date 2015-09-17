@@ -2,8 +2,8 @@
 
     'use strict';
 
-    angular.module('adminsys')
-        .controller('SidebarMenuCtrl', function($scope, sidebarMenuService, $auth, alertService, Account){
+    adminModule
+        .controller('SidebarMenuCtrl', function($scope, sidebarMenuService, $auth, alertService){
 
             $scope.alerts = alertService.get();
 

@@ -1,33 +1,33 @@
 .user-panel
     .pull-left.image
         img.user-image(check-image='', ng-src='{{userProfile.image}}', alt='User Image')
-        .pull-left.info
-            p {{userProfile.user.displayName}}
-            // Status
-            a(href='#')
-                i.fa.fa-circle.text-success
-                |  Online
-    // search form (Optional)
-    form.sidebar-form(action='#', method='get')
-        .input-group
-            input.form-control(type='text', name='q', placeholder='Search...')
-            span.input-group-btn
-                button#search-btn.btn.btn-flat(type='submit', name='search')
-                    i.fa.fa-search
-    // /.search form
-    ul.sidebar-menu
-        li(ng-repeat='menu in menus', ng-class="{'treeview': menu.children}", treeview='', istreeview='{{menu.children}}')
-            a(href='#', ui-sref='{{menu.state}}', ng-if='menu.state')
-                i(class='{{menu.class}}')
-                span {{menu.text}}
-                small.badge.pull-right(class='bg-{{menu.badge.color || green}}', ng-if='menu.badge') {{menu.badge.text}}
-            a(href='#', ng-if='!menu.state && isAdmin()')
-                i(class='{{menu.class}}')
-                span {{menu.text}}
-                i.fa.fa-angle-left.pull-right(ng-if='!menu.badge')
-                small.badge.pull-right(class='bg-{{menu.badge.color || green}}', ng-if='menu.badge') {{menu.badge.text}}
-            ul.treeview-menu(ng-if='menu.children && isAdmin()')
-                li(ng-repeat='child in menu.children')
-                    a(href='#', ui-sref='{{child.state}}')
-                        i(class='{{child.class}}')
-                        | {{child.text}}
+    .pull-left.info
+        p {{userProfile.user.displayName}}
+        // Status
+        a(href='#')
+            i.fa.fa-circle.text-success
+            |  Online
+// search form (Optional)
+form.sidebar-form(action='#', method='get')
+    .input-group
+        input.form-control(type='text', name='q', placeholder='Search...')
+        span.input-group-btn
+            button#search-btn.btn.btn-flat(type='submit', name='search')
+                i.fa.fa-search
+// /.search form
+ul.sidebar-menu
+    li(ng-repeat='menu in menus', ng-class="{'treeview': menu.children}", treeview='', istreeview='{{menu.children}}')
+        a(href='#', ui-sref='{{menu.state}}', ng-if='menu.state')
+            i(class='{{menu.class}}')
+            span {{menu.text}}
+            small.badge.pull-right(class='bg-{{menu.badge.color || green}}', ng-if='menu.badge') {{menu.badge.text}}
+        a(href='#', ng-if='!menu.state && isAdmin()')
+            i(class='{{menu.class}}')
+            span {{menu.text}}
+            i.fa.fa-angle-left.pull-right(ng-if='!menu.badge')
+            small.badge.pull-right(class='bg-{{menu.badge.color || green}}', ng-if='menu.badge') {{menu.badge.text}}
+        ul.treeview-menu(ng-if='menu.children && isAdmin()')
+            li(ng-repeat='child in menu.children')
+                a(href='#', ui-sref='{{child.state}}')
+                    i(class='{{child.class}}')
+                    | {{child.text}}

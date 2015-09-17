@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('adminsys')
+    adminModule
         .controller('layoutCtrl', function($scope, $rootScope){
             $scope.title = 'default title';
             $scope.subtitle = 'default subtitle';

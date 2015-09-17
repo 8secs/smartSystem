@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('adminsys')
+    adminModule
         .factory('sidebarMenuService', function($http, $rootScope){
 
             return {

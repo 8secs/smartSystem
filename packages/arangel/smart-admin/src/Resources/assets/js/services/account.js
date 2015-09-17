@@ -5,8 +5,8 @@
 (function () {
     'use strict';
 
-    angular.module('adminsys')
-        .factory('Account', function($http) {
+    adminModule
+        .factory('AdminAccount', function($http) {
             return {
                 getIpInfo: function(){
                     return $http.get('http://ipinfo.io/json');

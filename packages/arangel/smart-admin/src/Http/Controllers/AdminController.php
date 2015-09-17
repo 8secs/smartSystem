@@ -10,7 +10,7 @@ namespace Arangel\SmartAdmin\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Request;
+use Illuminate\Http\Request;
 use Arangel\SmartAuth\Http\Models\Permission;
 use Arangel\SmartAuth\Http\Models\Role;
 use Arangel\SmartAdmin\Http\Models\User;

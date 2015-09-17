@@ -2,12 +2,12 @@ section.content-header
     h1
         | Dashboard
         small Quick view of important sections
-        ol.breadcrumb
-            li
-                a(href='#', ui-sref='dashboard')
-                    i.fa.fa-dashboard
-                    |  Dashboard
-        alert(ng-repeat='alert in alerts', type='{{alert.type}}', close='alert.close()') {{ alert.msg }}
+    ol.breadcrumb
+        li
+            a(href='#', ui-sref='dashboard')
+                i.fa.fa-dashboard
+                |  Dashboard
+    alert(ng-repeat='alert in alerts', type='{{alert.type}}', close='alert.close()') {{ alert.msg }}
     // Main content
     section.content
         .row

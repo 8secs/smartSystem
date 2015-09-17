@@ -1,15 +1,20 @@
-(function () {
-    'use strict';
+'use strict';
 
-    angular.module('adminsys', [
+var adminModule;
+
+(function () {
+
+    adminModule = angular.module('adminsys', [
             'ngResource',
             'ngTable',
-            'ui.multiselect',
+            'ui.router',
+            'ui.bootstrap',
+            'ngAnimate',
+            'ui.multiselect'
         ])
         .config(function($stateProvider, $urlRouterProvider, $authProvider) {
 
             $stateProvider
-
 
                 .state('users', {
                     url: '/users',
@@ -60,8 +65,6 @@
                 });
 
             $urlRouterProvider.otherwise('/dashboard');
-            console.log("admmin");
-
         });
 
 })();

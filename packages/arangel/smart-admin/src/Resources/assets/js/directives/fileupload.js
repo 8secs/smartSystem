@@ -1,7 +1,7 @@
 (function (){
     'use strict';
 
-    angular.module('adminsys')
+    adminModule
         .directive('ngThumb', ['$window', function($window) {
             var helper = {
                 support: !!($window.FileReader && $window.CanvasRenderingContext2D),

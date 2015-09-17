@@ -2,8 +2,7 @@
 
     'use strict';
 
-    angular.module('adminsys')
-
+    adminModule
         .directive('adminLteTree', [function() {
             console.log("adminLteTree");
             return {

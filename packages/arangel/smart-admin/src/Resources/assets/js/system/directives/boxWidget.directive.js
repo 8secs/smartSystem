@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    angular.module('adminsys')
+    adminModule
         .directive('adminLteBoxWidget', function(){
             return {
                 restrict: 'A',
