@@ -2,16 +2,16 @@ section.content-header
     h1
         | Users
         small Users list
-        ol.breadcrumb
-            li
-                a(href='#', ui-sref='dashboard')
-                    i.fa.fa-dashboard
-                    |  Dashboard
-            li
-                a(href='#', ui-sref='users')
-                    i.fa.fa-users
-                    | Users
-        alert(ng-repeat='alert in alerts', type='{{alert.type}}', close='alert.close()') {{ alert.msg }}
+    ol.breadcrumb
+        li
+            a(href='#', ui-sref='dashboard')
+                i.fa.fa-dashboard
+                |  Dashboard
+        li
+            a(href='#', ui-sref='users')
+                i.fa.fa-users
+                | Users
+    alert(ng-repeat='alert in alerts', type='{{alert.type}}', close='alert.close()') {{ alert.msg }}
     // Main content
     section.content
         .box

@@ -9,7 +9,7 @@
 Route::group(['prefix' => 'api', 'middleware' => 'auth'], function(){
 
     // API Routes.
-    Route::get('me', ['uses' => 'Arangel\SmartAuth\Http\Controllers\UserController@getUser']);
+    Route::get('me', ['uses' => 'Arangel\SmartAdmin\Http\Controllers\UserController@getUser']);
     Route::put('me', ['uses' => 'Arangel\SmartAuth\Http\Controllers\UserController@updateUser']);
 
     Route::get('me/friends', ['uses' => 'Arangel\SmartAdmin\Http\Controllers\ProfileController@getFriends']);
@@ -37,6 +37,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth'], function(){
     Route::post('dashboard/user/destroy-user', ['uses' => 'Arangel\SmartAdmin\Http\Controllers\AdminController@destroyUser']);
 
     Route::get('dashboard/roles', ['uses' => 'Arangel\SmartAdmin\Http\Controllers\AdminController@roles']);
+    Route::get('dashboard/permissions', ['uses' => 'Arangel\SmartAdmin\Http\Controllers\AdminController@permissions']);
     Route::get('dashboard/role/{roleID}', ['uses' => 'Arangel\SmartAdmin\Http\Controllers\AdminController@getRole']);
     Route::post('dashboard/roles/store-role', ['uses' => 'Arangel\SmartAdmin\Http\Controllers\AdminController@storeRole']);
     Route::post('dashboard/roles/update-role', ['uses' => 'Arangel\SmartAdmin\Http\Controllers\AdminController@updateRole']);

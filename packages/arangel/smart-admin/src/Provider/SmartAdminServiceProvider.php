@@ -18,6 +18,10 @@ class SmartAdminServiceProvider extends ServiceProvider
             __DIR__.'/../Database/migrations/' => database_path('migrations')
         ], 'migrations');
 
+        $this->publishes([
+            __DIR__.'/../Database/seeds/' => database_path('seeds')
+        ], 'seeds');
+
         /*$this->publishes([
             __DIR__.'/../Resources/lang/' => public_path('themes/'. Theme::getActive() . '/assets/resources/admin'),
         ], 'lang');*/

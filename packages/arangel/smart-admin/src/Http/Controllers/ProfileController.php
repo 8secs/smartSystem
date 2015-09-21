@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Arangel\SmartAdmin\Http\Models\Location;
 use Arangel\SmartAdmin\Http\Models\User;
+use Arangel\SmartAdmin\Http\Models\Profile;
 
 class ProfileController extends Controller{
 

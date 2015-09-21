@@ -2,16 +2,16 @@ section.content-header
     h1
         | Roles &amp; Permissions
         small Roles and permissions list
-        ol.breadcrumb
-            li
-                a(href='#', ui-sref='dashboard')
-                    i.fa.fa-dashboard
-                    |  Dashboard
-            li
-                a(href='#', ui-sref='roles')
-                    i.fa.fa-certificate
-                    | Roles
-        alert(ng-repeat='alert in alerts', type='{{alert.type}}', close='alert.close()') {{ alert.msg }}
+    ol.breadcrumb
+        li
+            a(href='#', ui-sref='dashboard')
+                i.fa.fa-dashboard
+                |  Dashboard
+        li
+            a(href='#', ui-sref='roles')
+                i.fa.fa-certificate
+                | Roles
+    alert(ng-repeat='alert in alerts', type='{{alert.type}}', close='alert.close()') {{ alert.msg }}
     // Main content
     section.content
         .box
@@ -33,8 +33,8 @@ section.content-header
                                 td(data-title="'Description'") {{role.description}}
                                 td.text-center(data-title="'Actions'", width='150')
                                     a.btn.btn-warning.btn-xs(href='', ui-sref='edit-role({roleID: role.id, editRole:true})') Edit
-                                    // <a href="" ng-click="deleteRole(role.id)" class="btn btn-danger btn-xs">Delete</a>
-                                    a.btn.btn-danger.btn-xs(href='', ng-click="showModal('role', role.id)", data-animation='am-fade-and-slide-top') Delete
+                                    a.btn.btn-danger.btn-xs(ng-click='deleteRole(role.id)') Delete
+                                    //a.btn.btn-danger.btn-xs(href='', ng-click="showModal('role', role.id)", data-animation='am-fade-and-slide-top') Delete
             // /.box-body
             .box-footer
                 .row
@@ -65,8 +65,9 @@ section.content-header
                                 td(data-title="'Description'") {{permission.description}}
                                 td.text-center(data-title="'Actions'", width='150')
                                     a.btn.btn-warning.btn-xs(href='', ui-sref='edit-permission({permID: permission.id, editPerm: true})') Edit
-                                    a.btn.btn-danger.btn-xs(href='', ng-click="showModal('permission', permission.id)", data-animation='am-fade-and-slide-top') Delete
-                                    // <a href="" ng-click="deletePermission(permission.id)" class="btn btn-danger btn-xs">Delete</a>
+                                    a.btn.btn-danger.btn-xs(ng-click='deletePermission(permission.id)') Delete
+                                    //a.btn.btn-danger.btn-xs(href='', ng-click="showModal('permission', permission.id)", data-animation='am-fade-and-slide-top') Delete
+
             // /.box-body
             .box-footer
                 .row

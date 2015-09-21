@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use Arangel\SmartAuth\Http\Models\Permission;
 use Arangel\SmartAuth\Http\Models\Role;
 use Arangel\SmartAdmin\Http\Models\User;
+use Arangel\SmartAdmin\Http\Models\Location;
+use Arangel\SmartAdmin\Http\Models\Profile;
 use Response;
 
 class AdminController extends Controller {
@@ -29,6 +31,12 @@ class AdminController extends Controller {
         $permissions = Permission::all();
 
         return Response::json(['roles' => $roles, 'permissions' => $permissions]);
+    }
+
+    public function permissions(){
+        $permissions = Permission::all();
+
+        return Response::json(['permissions' => $permissions]);
     }
 
     /**
@@ -51,6 +59,8 @@ class AdminController extends Controller {
         $user = User::find($id);
         $user->roles = $user->roles;
         $roles = Role::all(['id', 'display_name']);
+        $user->profile = $user->profile;
+        $user->locations = $user->locations;
 
         return Response::json(['user' => $user, 'roles' => $roles]);
     }

@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => App\User::class,
+    'model' => Arangel\SmartAdmin\Http\Models\User::class,
 
     /*
     |--------------------------------------------------------------------------

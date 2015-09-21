@@ -1,13 +1,12 @@
 
 <section class="content-header">
-  <h1>Permission<small ng-show="!editPerm">Create permission</small><small ng-show="editPerm">Edit permission</small>
-    <ol class="breadcrumb">
-      <li><a href="#" ui-sref="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="#" ui-sref="roles"><i class="fa fa-certificate"></i>Roles</a></li>
-      <li><a href="#" ui-sref="permission"><i class="fa fa-lock"></i>Permission</a></li>
-    </ol>
-    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
-  </h1>
+  <h1>Permission<small ng-show="!editPerm">Create permission</small><small ng-show="editPerm">Edit permission</small></h1>
+  <ol class="breadcrumb">
+    <li><a href="#" ui-sref="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li><a href="#" ui-sref="roles"><i class="fa fa-certificate"></i>Roles</a></li>
+    <li><a href="#" ui-sref="permission"><i class="fa fa-lock"></i>Permission</a></li>
+  </ol>
+  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
   <!-- Main content-->
   <section class="content">
     <div class="box">
@@ -17,7 +16,7 @@
           <button ui-sref="roles" class="btn btn-primary">Volver</button>
         </div>
       </div>
-      <form method="post" name="permissionForm">
+      <form method="post" ng-submit="submitPermission(permission)" name="permissionForm">
         <div class="box-body">
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -36,8 +35,8 @@
           </div>
         </div>
         <div class="box-footer">
-          <button type="button" click="alert('hello world!')" class="btn btn-primary">Create</button>
-          <!-- <button ng-if="editPerm" type="submit" ng-disabled="permissionForm.$invalid" class="btn btn-primary" ng-click="submitPermission(permission)">Update Information</button>-->
+          <button ng-if="!editPerm" type="submit" ng-disabled="permissionForm.$invalid" class="btn btn-primary btn btn-primary">Create</button>
+          <button ng-if="editPerm" type="submit" ng-disabled="permissionForm.$invalid" class="btn btn-primary btn btn-primary">Update Information</button>
         </div>
       </form>
     </div>

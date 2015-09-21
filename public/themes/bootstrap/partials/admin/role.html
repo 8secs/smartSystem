@@ -1,13 +1,12 @@
 
 <section class="content-header">
-  <h1>Role<small ng-if="!editRole">Create role</small><small ng-if="editRole">Edit role</small>
-    <ol class="breadcrumb">
-      <li><a href="#" ui-sref="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="#" ui-sref="roles"><i class="fa fa-certificate"></i>Roles</a></li>
-      <li><a href="#" ui-sref="role"><i class="fa fa-user"></i>Role</a></li>
-    </ol>
-    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
-  </h1>
+  <h1>Role<small ng-if="!editRole">Create role</small><small ng-if="editRole">Edit role</small></h1>
+  <ol class="breadcrumb">
+    <li><a href="#" ui-sref="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li><a href="#" ui-sref="roles"><i class="fa fa-certificate"></i>Roles</a></li>
+    <li><a href="#" ui-sref="role"><i class="fa fa-user"></i>Role</a></li>
+  </ol>
+  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
   <!-- Main content-->
   <section class="content">
     <div class="box">
@@ -17,7 +16,7 @@
           <button ui-sref="roles" class="btn btn-primary">Volver</button>
         </div>
       </div>
-      <form method="post" ng-submit="submitRole(role)" name="roleForm">
+      <form method="post" ng-submit="submitRole(role)" name="roleForm" novalidate="novalidate">
         <div class="box-body">
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -33,13 +32,15 @@
               <div class="form-group has-feedback">
                 <input type="text" name="description" ng-model="role.description" placeholder="Description" class="form-control input-lg"/>
               </div>
-              <div ng-if="!editRole" class="form-group">
-                <label class="control-label"><i class="ion-person"></i> Permissions</label><br/>
-                <ul ng-repeat="permission in user.permissions">
-                  <li>{{permission.display_name}}</li>
-                </ul>
-              </div>
-              <div ng-if="editRole" class="form-group has-feedback">
+              <!--.form-group(ng-if='!editRole')
+              label.control-label
+                  i.ion-person
+                  |  Permissions
+              br
+              ul(ng-repeat='permission in permissions')
+                  li {{permission.display_name}}
+              -->
+              <div class="form-group has-feedback">
                 <label class="control-label"><i class="ion-person"></i> Permissions</label><br/>
                 <multiselect ng-model="role.permissions" options="p.display_name for p in permissions" data-multiple="true" scroll-after-rows="5" data-compare-by="id" change="selected()"></multiselect>
               </div>
@@ -47,8 +48,8 @@
           </div>
         </div>
         <div class="box-footer">
-          <button ng-if="!editPerm" type="submit" ng-disabled="permissionForm.$invalid" class="btn btn-primary">Create</button>
-          <button ng-if="editPerm" type="submit" ng-disabled="permissionForm.$invalid" class="btn btn-primary">Update Information</button>
+          <button ng-show="!editRole" type="submit" ng-disabled="roleForm.$invalid" class="btn btn-primary">Create</button>
+          <button ng-show="editRole" type="submit" ng-disabled="roleForm.$invalid" class="btn btn-primary">Update Information</button>
         </div>
       </form>
     </div>

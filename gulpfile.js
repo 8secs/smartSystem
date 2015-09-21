@@ -103,7 +103,7 @@ elixir(function(mix) {
         .task('global-jade', themeResources+'jade/**/*.jade')
         //.task('global-images', elixir.config.assetsPath+'/images/**/*.{png,gif,jpg,svg}')
         //.task('global-locales', elixir.config.assetsPath+'/resources/**/*.json')
-        .copy(paths.bootstrap + 'fonts/**', public_theme_path+'assets/fonts/bootstrap')
+        .copy(paths.bootstrap + 'fonts/**', public_theme_path+'assets/fonts')
         .copy(paths.fontAwesome + 'fonts/**', public_theme_path+'assets/fonts')
         .scripts(getGlobalScripts(), public_theme_path+'assets/js/scripts.js')
         .scripts(["app.js"], public_theme_path+'assets/js/app.js')

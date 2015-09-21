@@ -9,9 +9,14 @@
                                           $state,
                                           $stateParams,
                                           Role,
+                                          $modal,
+                                          $log,
                                           ngTableParams){
 
             $scope.alerts = alertService.get();
+
+            $scope.roles = null;
+
 
             /**
              * Get roles list information.
@@ -48,6 +53,17 @@
                     });
             };
 
+            $scope.getPermissions = function(){
+                Role.getPermissions()
+                    .success(function(data){
+                        $scope.permissions = data.permissions;
+                        //$state.go('new-role');
+                    })
+                    .error(function(error){
+                        alertService.add('error', error.message);
+                    })
+            };
+
             /**
              * Get Role data
              */
@@ -59,7 +75,7 @@
                         $scope.role = data.role;
                         $scope.permissions = data.permissions;
                         $scope.role.permissions = data.role.permissions;
-
+                        $log.log($scope.permissions);
                         $scope.permissionSearchSettings = {enableSearch: true};
                     })
                     .error(function(error) {
@@ -124,7 +140,7 @@
             };
 
             $scope.submitRole = function(data){
-
+                $log.log("submitRole");
                 if(typeof $scope.editRole === 'undefined'){
                     $scope.storeRole(data);
                 }else{
@@ -221,14 +237,14 @@
                 }
             };
 
-            /*$scope.showModal = function(model, id){
-             var modal = $modal({scope: $scope, templateUrl: 'partials/components/modal-delete.tpl.html', show: true});
-             $scope.title = "Delete " + model;
-             $scope.content = "Are you sure that you want to delete this " + model + "?";
-             $scope.model = model;
-             $scope.id = id;
-             modal.$promise.then(modal.show);
-             };*/
+            $scope.showModal = function(model, id){
+                var modal = $modal({scope: $scope, templateUrl: 'partials/components/modal-delete.tpl.html', show: true});
+                $scope.title = "Delete " + model;
+                $scope.content = "Are you sure that you want to delete this " + model + "?";
+                $scope.model = model;
+                $scope.id = id;
+                modal.$promise.then(modal.open);
+            };
 
             $scope.deleteModel = function(model, id){
                 if(model == 'role') $scope.deleteRole(id);
@@ -245,6 +261,7 @@
                 $scope.getPermission($stateParams.permID)
             }else{
                 $scope.getRoles();
+                $scope.getPermissions();
             }
         })
 

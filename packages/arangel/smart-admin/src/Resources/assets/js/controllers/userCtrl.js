@@ -4,10 +4,18 @@
 (function () {
     'use strict';
 
-    adminModule.controller('UserCtrl', function ($scope, $state, $stateParams, alertService, $modal, User, $filter, ngTableParams){
+    adminModule.controller('UserCtrl', function ($scope,
+                                                 $rootScope,
+                                                 $state,
+                                                 $stateParams,
+                                                 alertService,
+                                                 $modal,
+                                                 User,
+                                                 $filter,
+                                                 ngTableParams){
 
             $scope.panes = [
-                {title: "Settings", content: "partials/account/profile/settings.html", active:true}
+                {title: "Settings", content: "themes/"+$rootScope.config.activeTheme+"/partials/profile/settings.html", active:true}
             ];
 
             $scope.alerts = alertService.get();

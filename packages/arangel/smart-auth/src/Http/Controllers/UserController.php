@@ -15,7 +15,7 @@ use Intervention\Image\Facades\Image;
 use Input;
 use Response;
 use Arangel\SmartAuth\Http\Models\Role;
-use Arangel\SmartAuth\Http\Models\User;
+use Arangel\SmartAdmin\Http\Models\User;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller {
@@ -40,6 +40,8 @@ class UserController extends Controller {
         $user = User::find($request['user']['sub']);
         $user->roles = $user->roles()->get();
         $user->isAdmin = $user->hasRole('admin');
+        $user->profile = $user->profile;
+        $user->locations = $user->locations;
         $roles = Role::all(['id', 'display_name']);
         return Response::json(['user' => $user, 'roles' => $roles]);
     }

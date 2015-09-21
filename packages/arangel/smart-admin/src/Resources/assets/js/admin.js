@@ -38,6 +38,7 @@ var adminModule;
                 .state('new-role', {
                     url: '/new-role',
                     templateUrl: 'themes/bootstrap/partials/admin/role.html',
+                    controller: 'RoleCtrl',
                     parent: 'admin'
                 })
                 .state('edit-role', {

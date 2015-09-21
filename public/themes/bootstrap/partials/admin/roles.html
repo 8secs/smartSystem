@@ -1,12 +1,11 @@
 
 <section class="content-header">
-  <h1>Roles &amp; Permissions<small>Roles and permissions list</small>
-    <ol class="breadcrumb">
-      <li><a href="#" ui-sref="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="#" ui-sref="roles"><i class="fa fa-certificate"></i>Roles</a></li>
-    </ol>
-    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
-  </h1>
+  <h1>Roles &amp; Permissions<small>Roles and permissions list</small></h1>
+  <ol class="breadcrumb">
+    <li><a href="#" ui-sref="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li><a href="#" ui-sref="roles"><i class="fa fa-certificate"></i>Roles</a></li>
+  </ol>
+  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
   <!-- Main content-->
   <section class="content">
     <div class="box">
@@ -28,8 +27,8 @@
                 <td data-title="'Name'">{{role.name}}</td>
                 <td data-title="'Display Name'">{{role.display_name}}</td>
                 <td data-title="'Description'">{{role.description}}</td>
-                <td data-title="'Actions'" width="150" class="text-center"><a href="" ui-sref="edit-role({roleID: role.id, editRole:true})" class="btn btn-warning btn-xs">Edit</a>
-                  <!-- <a href="" ng-click="deleteRole(role.id)" class="btn btn-danger btn-xs">Delete</a>--><a href="" ng-click="showModal('role', role.id)" data-animation="am-fade-and-slide-top" class="btn btn-danger btn-xs">Delete</a>
+                <td data-title="'Actions'" width="150" class="text-center"><a href="" ui-sref="edit-role({roleID: role.id, editRole:true})" class="btn btn-warning btn-xs">Edit</a><a ng-click="deleteRole(role.id)" class="btn btn-danger btn-xs">Delete</a>
+                  <!--a.btn.btn-danger.btn-xs(href='', ng-click="showModal('role', role.id)", data-animation='am-fade-and-slide-top') Delete-->
                 </td>
               </tr>
             </table>
@@ -65,8 +64,8 @@
                 <td data-title="'Name'">{{permission.name}}</td>
                 <td data-title="'Display Name'">{{permission.display_name}}</td>
                 <td data-title="'Description'">{{permission.description}}</td>
-                <td data-title="'Actions'" width="150" class="text-center"><a href="" ui-sref="edit-permission({permID: permission.id, editPerm: true})" class="btn btn-warning btn-xs">Edit</a><a href="" ng-click="showModal('permission', permission.id)" data-animation="am-fade-and-slide-top" class="btn btn-danger btn-xs">Delete</a>
-                  <!-- <a href="" ng-click="deletePermission(permission.id)" class="btn btn-danger btn-xs">Delete</a>-->
+                <td data-title="'Actions'" width="150" class="text-center"><a href="" ui-sref="edit-permission({permID: permission.id, editPerm: true})" class="btn btn-warning btn-xs">Edit</a><a ng-click="deletePermission(permission.id)" class="btn btn-danger btn-xs">Delete</a>
+                  <!--a.btn.btn-danger.btn-xs(href='', ng-click="showModal('permission', permission.id)", data-animation='am-fade-and-slide-top') Delete-->
                 </td>
               </tr>
             </table>

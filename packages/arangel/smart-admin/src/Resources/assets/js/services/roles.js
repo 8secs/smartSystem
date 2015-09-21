@@ -11,6 +11,9 @@
                     var url = "/api/dashboard/roles";
                     return $http.get(url);
                 },
+                getPermissions: function() {
+                    return $http.get('/api/dashboard/permissions');
+                },
                 getRole: function(id){
                     return $http.get('/api/dashboard/role/'+id);
                 },

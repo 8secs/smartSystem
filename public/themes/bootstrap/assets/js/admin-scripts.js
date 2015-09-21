@@ -38,6 +38,7 @@ var adminModule;
                 .state('new-role', {
                     url: '/new-role',
                     templateUrl: 'themes/bootstrap/partials/admin/role.html',
+                    controller: 'RoleCtrl',
                     parent: 'admin'
                 })
                 .state('edit-role', {
@@ -2090,9 +2091,14 @@ var adminModule;
                                           $state,
                                           $stateParams,
                                           Role,
+                                          $modal,
+                                          $log,
                                           ngTableParams){
 
             $scope.alerts = alertService.get();
+
+            $scope.roles = null;
+
 
             /**
              * Get roles list information.
@@ -2129,6 +2135,17 @@ var adminModule;
                     });
             };
 
+            $scope.getPermissions = function(){
+                Role.getPermissions()
+                    .success(function(data){
+                        $scope.permissions = data.permissions;
+                        //$state.go('new-role');
+                    })
+                    .error(function(error){
+                        alertService.add('error', error.message);
+                    })
+            };
+
             /**
              * Get Role data
              */
@@ -2140,7 +2157,7 @@ var adminModule;
                         $scope.role = data.role;
                         $scope.permissions = data.permissions;
                         $scope.role.permissions = data.role.permissions;
-
+                        $log.log($scope.permissions);
                         $scope.permissionSearchSettings = {enableSearch: true};
                     })
                     .error(function(error) {
@@ -2205,7 +2222,7 @@ var adminModule;
             };
 
             $scope.submitRole = function(data){
-
+                $log.log("submitRole");
                 if(typeof $scope.editRole === 'undefined'){
                     $scope.storeRole(data);
                 }else{
@@ -2302,14 +2319,14 @@ var adminModule;
                 }
             };
 
-            /*$scope.showModal = function(model, id){
-             var modal = $modal({scope: $scope, templateUrl: 'partials/components/modal-delete.tpl.html', show: true});
-             $scope.title = "Delete " + model;
-             $scope.content = "Are you sure that you want to delete this " + model + "?";
-             $scope.model = model;
-             $scope.id = id;
-             modal.$promise.then(modal.show);
-             };*/
+            $scope.showModal = function(model, id){
+                var modal = $modal({scope: $scope, templateUrl: 'partials/components/modal-delete.tpl.html', show: true});
+                $scope.title = "Delete " + model;
+                $scope.content = "Are you sure that you want to delete this " + model + "?";
+                $scope.model = model;
+                $scope.id = id;
+                modal.$promise.then(modal.open);
+            };
 
             $scope.deleteModel = function(model, id){
                 if(model == 'role') $scope.deleteRole(id);
@@ -2326,6 +2343,7 @@ var adminModule;
                 $scope.getPermission($stateParams.permID)
             }else{
                 $scope.getRoles();
+                $scope.getPermissions();
             }
         })
 
@@ -2337,10 +2355,18 @@ var adminModule;
 (function () {
     'use strict';
 
-    adminModule.controller('UserCtrl', function ($scope, $state, $stateParams, alertService, $modal, User, $filter, ngTableParams){
+    adminModule.controller('UserCtrl', function ($scope,
+                                                 $rootScope,
+                                                 $state,
+                                                 $stateParams,
+                                                 alertService,
+                                                 $modal,
+                                                 User,
+                                                 $filter,
+                                                 ngTableParams){
 
             $scope.panes = [
-                {title: "Settings", content: "partials/account/profile/settings.html", active:true}
+                {title: "Settings", content: "themes/"+$rootScope.config.activeTheme+"/partials/profile/settings.html", active:true}
             ];
 
             $scope.alerts = alertService.get();
@@ -2987,6 +3013,9 @@ var adminModule;
                 getRoles: function() {
                     var url = "/api/dashboard/roles";
                     return $http.get(url);
+                },
+                getPermissions: function() {
+                    return $http.get('/api/dashboard/permissions');
                 },
                 getRole: function(id){
                     return $http.get('/api/dashboard/role/'+id);
