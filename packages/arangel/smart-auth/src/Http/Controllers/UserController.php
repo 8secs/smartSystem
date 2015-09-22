@@ -19,6 +19,8 @@ use Config;
 use JWT;
 use Input;
 use Response;
+use Activity;
+use Spatie\Activitylog\Models\Activity as ActivityModel;
 
 class UserController extends Controller {
 
@@ -44,12 +46,16 @@ class UserController extends Controller {
         $user->isAdmin = $user->hasRole('admin');
         $user->profile = $user->profile;
         $user->locations = $user->locations;
-        $roles = Role::all(['id', 'display_name']);
         $user->notifications = $user->getNotifications();
         $user->notificationsNotRead = $user->countNotificationsNotRead();
         $threads = Thread::forUser($user->id)->latest('updated_at')->get();
         $user->threads = $threads;
-        return Response::json(['user' => $user, 'roles' => $roles]);
+
+        $roles = Role::all(['id', 'display_name']);
+
+        $activities = ActivityModel::where('user_id', $user->id)->get();
+
+        return Response::json(['user' => $user, 'roles' => $roles, 'activities' => $activities]);
     }
     /**
      * Update signed in user's profile.
@@ -93,6 +99,7 @@ class UserController extends Controller {
 
         $user->save();
         $token = $this->createToken($user);
+        Activity::log("You have updated your basic user information", $user->id);
         return response()->json(['token' => $token]);
     }
 

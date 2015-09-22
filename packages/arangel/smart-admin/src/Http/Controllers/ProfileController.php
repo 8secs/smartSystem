@@ -17,8 +17,11 @@ use Arangel\SmartAdmin\Http\Models\Profile;
 
 use Notifynder;
 use Response;
+use Activity;
 
-class ProfileController extends Controller{
+
+class ProfileController extends Controller {
+
 
     public function storeProfile(Request $request){
         $input = $request->all();
@@ -29,7 +32,7 @@ class ProfileController extends Controller{
         $p->education = $input['education'];
         $p->about_me = $input['about_me'];
         $user->profile()->save($p);
-
+        Activity::log("You have created your profile", $user->id);
         return response()->json(['success', $user]);
     }
 
@@ -41,6 +44,8 @@ class ProfileController extends Controller{
         $profile->education = $input['education'];
         $profile->about_me = $input['about_me'];
         $user->profile()->save($profile);
+
+        Activity::log("Your profile has been update", $user->id);
 
         return response()->json(['success', $user]);
     }
@@ -83,6 +88,8 @@ class ProfileController extends Controller{
                 ->extra(compact('friendName'))
                 ->url('http://localhost:8000')
                 ->send();
+            $activity = $friendName ." accepted your Friend request";
+            Activity::log($activity, $friend->id);
             return response()->json(["success" => 'Add user to friend list']);
         }
     }
@@ -101,6 +108,7 @@ class ProfileController extends Controller{
                 ->extra(compact('friendName'))
                 ->url('http://localhost:8000')
                 ->send();
+            Activity::log($friendName." reject your friend request", $friend->id);
             return response()->json(["success" => 'Remove user from friends list']);
         }
     }
@@ -137,6 +145,7 @@ class ProfileController extends Controller{
                 ->extra(compact('friendName'))
                 ->url('http://localhost:8000')
                 ->send();
+            Activity::log($friendName ." is following you", $followee->id);
             return response()->json(['success' => 'You are following this user']);
         }
     }
@@ -155,6 +164,7 @@ class ProfileController extends Controller{
                 ->extra(compact('friendName'))
                 ->url('http://localhost:8000')
                 ->send();
+            Activity::log($friendName ." is not following you", $followee->id);
             return response()->json(['success' => "Remove from the user`s followers"]);
         }
     }
@@ -170,7 +180,7 @@ class ProfileController extends Controller{
         $location->postCode = $input['PostCode'];
         $location->latitude = $input['Latitude'];
         $location->longitude = $input['Longitude'];
-
+        Activity::log("You have store a new Location in your profile", $user->id);
         $user->locations()->save($location);
 
         return response()->json(['sucess' => "Your locations has been stored."]);
@@ -187,12 +197,14 @@ class ProfileController extends Controller{
         $location->latitude = $request->input('Latitude');
         $location->longitude = $request->input('Longitude');
         $location->save();
+        Activity::log("You have updated a Location in your profile", $user->id);
         return response()->json(['Success', "Your location has been updated."]);
     }
 
     public function deleteLocation(Request $request){
         $user = User::find($request['user']['sub']);
         $location = $user->locations()->find($request->input('Id'))->delete();
+        Activity::log("You have deleted a Location in your profile", $user->id);
         return response()->json('Success', "Your location has been delete.");
     }
 

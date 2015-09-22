@@ -69,6 +69,7 @@
                         $scope.user = data.user;
                         $scope.image = 'uploads/'+data.user.image;
                         $scope.roles = data.roles;
+                        $scope.activities = data.activities;
                         $scope.user.roles = data.user.roles;
                         $scope.num_friends = data.user.friends.length;
                         $scope.num_followers = data.user.followers.length;

@@ -1,26 +1,23 @@
 .tabs-content
     ul.timeline.timeline-inverse
-        li.time-label
-            span.bg-red
-                | 10 Feb. 2014
-        li
-            i.fa.fa-envelope.bg-blue
+        li(ng-repeat='activity in userProfile.activities')
+            i.fa.fa-user.bg-blue
             .timeline-item
                 span.time
                     i.fa.fa-clock-o
-                    |  12:05
-                h3.timeline-header
-                    a(href='#') Support Team
-                    |  sent you an email
+                    |  {{activity.created_at}}
                 .timeline-body
-                    | Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                    | weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                    | jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                    | quora plaxo ideeli hulu weebly balihoo...
-                .timeline-footer
-                    a.btn.btn-primary.btn-xs Read more
-                    a.btn.btn-danger.btn-xs Delete
-        li
+                    | {{activity.text}}
+
+
+
+
+
+        //li.time-label
+            span.bg-red
+                | 10 Feb. 2014
+
+        //li
             i.fa.fa-user.bg-aqua
             .timeline-item
                 span.time
@@ -29,7 +26,7 @@
                 h3.timeline-header.no-border
                     a(href='#') Sarah Young
                     |  accepted your friend request
-        li
+        //li
             i.fa.fa-comments.bg-yellow
             .timeline-item
                 span.time
@@ -44,10 +41,10 @@
                     | We are more like Germany, ambitious and misunderstood!
                 .timeline-footer
                     a.btn.btn-warning.btn-flat.btn-xs View comment
-        li.time-label
+        //li.time-label
             span.bg-green
                 | 3 Jan. 2014
-        li
+        //li
             i.fa.fa-camera.bg-purple
             .timeline-item
                 span.time
@@ -61,5 +58,5 @@
                     img.margin(src='http://placehold.it/150x100', alt='...')
                     img.margin(src='http://placehold.it/150x100', alt='...')
                     img.margin(src='http://placehold.it/150x100', alt='...')
-        li
+        //li
             i.fa.fa-clock-o.bg-gray

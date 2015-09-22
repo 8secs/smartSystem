@@ -150,6 +150,7 @@ return [
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         Fenos\Notifynder\NotifynderServiceProvider::class,
         Cmgmyr\Messenger\MessengerServiceProvider::class,
+        Spatie\Activitylog\ActivitylogServiceProvider::class,
 
         /*
          *  Customs Service Providers
@@ -223,6 +224,7 @@ return [
         'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Notifynder'    => Fenos\Notifynder\Facades\Notifynder::class,
+        'Activity'  => Spatie\Activitylog\ActivitylogFacade::class,
 
     ],
 

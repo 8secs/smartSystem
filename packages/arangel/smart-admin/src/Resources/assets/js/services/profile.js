@@ -35,11 +35,12 @@
                         .then(
                         function(response){
                             var data = response.data;
-
+                            $log.log(data);
                             deferred.resolve({
                                 user: data.user,
                                 image: 'uploads/'+data.user.image,
                                 roles: data.roles,
+                                activities: data.activities,
                                 user_roles: data.user.roles,
                                 about: data.user.profile
                             });
