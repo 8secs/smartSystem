@@ -7,10 +7,10 @@
     <ul class="nav navbar-nav">
       <!-- Messages: style can be found in dropdown.less-->
       <li class="dropdown messages-menu">
-        <!-- Menu toggle button--><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-envelope-o"></i><span class="label label-success">4</span></a>
+        <!-- Menu toggle button--><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-envelope-o"></i><span class="label label-success">{{userProfile.user.threads.length}}</span></a>
         <ul class="dropdown-menu">
-          <li class="header">You have 4 messages</li>
-          <li>
+          <li class="header">You have {{userProfile.user.threads.length}} messages</li>
+          <li ng-repeat="thread in userProfile.user.threads">
             <!-- inner menu: contains the messages-->
             <ul class="menu">
               <li>
@@ -27,7 +27,7 @@
             </ul>
             <!-- /.menu-->
           </li>
-          <li class="footer"><a href="#">See All Messages</a></li>
+          <li ng-show="userProfile.user.threads.length &gt; 0" class="footer"><a href="#">See All Messages</a></li>
         </ul>
       </li>
       <!-- /.messages-menu-->
@@ -45,7 +45,7 @@
               <!-- end notification-->
             </ul>
           </li>
-          <li ng-show="userProfile.user.notifications" class="footer"><a href="#">View all</a></li>
+          <li ng-show="userProfile.user.notifications.length &gt; 0" class="footer"><a href="#">View all</a></li>
         </ul>
       </li>
       <!-- Tasks Menu-->

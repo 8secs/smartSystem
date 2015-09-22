@@ -1,22 +1,6 @@
 
 <div class="tabs-content">
-  <div class="post">
-    <div class="user-block"><img check-image="" ng-src="images/user1-128x128.jpg" alt="user image" class="img-circle img-bordered-sm"/><span class="username"><a href="#">Jonathan Burke Jr.</a><a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a></span><span class="description">Shared publicly - 7:30 PM today</span></div>
-    <!-- /.user-block-->
-    <p>
-      Lorem ipsum represents a long-held tradition for designers,
-      typographers and the like. Some people hate it and argue for
-      its demise, but others ignore the hate as they create awesome
-      tools to help create filler text for everyone from bacon lovers
-      to Charlie Sheen fans.
-    </p>
-    <ul class="list-inline">
-      <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-      <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-      <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>
-    </ul>
-    <input type="text" placeholder="Type a comment" class="form-control input-sm"/>
-    <!-- /.post-->
+  <div ng-repeat="thread in userProfile.user.threads" class="post">
     <!-- Post-->
     <div class="post clearfix">
       <div class="user-block"><img check-image="" ng-src="images/user7-128x128.jpg" alt="user image" class="img-circle img-bordered-sm"/><span class="username"><a href="#">Sarah Ross</a><a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a></span><span class="description">Sent you a message - 3 days ago</span></div>
@@ -40,32 +24,34 @@
       </form>
     </div>
     <!-- /.post-->
-    <!-- Post-->
-    <div class="post">
-      <div class="user-block"><img check-image="" ng-src="images/user6-128x128.jpg" alt="user image" class="img-circle img-bordered-sm"/><span class="username"><a href="#">Adam Jones</a><a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a></span><span class="description">Posted 5 photos - 5 days ago</span></div>
-      <!-- /.user-block-->
-      <div class="row margin-bottom">
-        <div class="col-sm-6"><img check-image="" ng-src="images/photo1.png" alt="Photo" class="img-responsive"/></div>
-        <!-- /.col-->
-        <div class="col-sm-6">
-          <div class="row">
-            <div class="col-sm-6"><img check-image="" ng-src="images/photo2.png" alt="Photo" class="img-responsive"/><br/><img check-image="" ng-src="images/photo3.jpg" alt="Photo" class="img-responsive"/></div>
-            <!-- /.col-->
-            <div class="col-sm-6"><img check-image="" ng-src="images/photo4.jpg" alt="Photo" class="img-responsive"/><br/><img check-image="" ng-src="images/photo1.png" alt="Photo" class="img-responsive"/></div>
-            <!-- /.col-->
-          </div>
-          <!-- /.row-->
-        </div>
-        <!-- /.col-->
+  </div>
+  <div class="new-post">
+    <form method="post" ng-submit="addMessage(message)" name="messageForm" novalidate="novalidate">
+      <div ng-class="{ 'has-error' : message.subject.$invalid &amp;&amp; !messageForm.subject.$pristine }" class="form-group has-feedback">
+        <input type="text" name="subject" ng-model="message.subject" placeholder="Subject" required="" autofocus="" class="form-control input-lg"/>
+        <p ng-show="message.subject.$invalid &amp;&amp; !messageForm.subject.$pristine" class="help-block">Subject is required.</p>
       </div>
-      <!-- /.row-->
-      <ul class="list-inline">
-        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-        <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>
-      </ul>
-      <input type="text" placeholder="Type a comment" class="form-control input-sm"/>
-    </div>
-    <!-- /.post-->
+      <div ng-class="{ 'has-error' : message.message.$invalid &amp;&amp; !messageForm.message.$pristine }" class="form-group has-feedback">
+        <textarea type="text" name="message" ng-model="message.message" placeholder="Message" required="" class="form-control"></textarea>
+        <p ng-show="message.message.$invalid &amp;&amp; !messageForm.message.$pristine" class="help-block">Message is required.</p>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group has-feedback">
+            <label class="control-label"><i class="ion-person"></i> Friends</label><br/>
+            <multiselect ng-model="friends" options="f.displayName for f in friends" data-multiple="true" scroll-after-rows="5" data-compare-by="id"></multiselect>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group has-feedback">
+            <label class="control-label"><i class="ion-person"></i> Followers</label><br/>
+            <multiselect ng-model="followers" options="f.displayName for f in followers" data-multiple="true" scroll-after-rows="5" data-compare-by="id"></multiselect>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" ng-disabled="messageForm.$invalid" class="btn btn-primary">Send</button>
+      </div>
+    </form>
   </div>
 </div>

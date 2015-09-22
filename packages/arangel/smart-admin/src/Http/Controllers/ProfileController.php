@@ -71,15 +71,16 @@ class ProfileController extends Controller{
     public function addFriend(Request $request){
         $friend = User::find($request->input("id"));
         $user = User::find($request['user']['sub']);
-        $friendName = $user->displayName;
+
         if($user->addFriend($friend)) {
             return response()->json(["error" => "Cannot add Friend to list"]);
         }
         else {
+            $friendName = $user->displayName;
             Notifynder::category('user.add_friend')
                 ->from($user->id)
                 ->to($friend->id)
-                ->extra(compact($friendName))
+                ->extra(compact('friendName'))
                 ->url('http://localhost:8000')
                 ->send();
             return response()->json(["success" => 'Add user to friend list']);
@@ -97,7 +98,7 @@ class ProfileController extends Controller{
             Notifynder::category('user.remove_friend')
                 ->from($user->id)
                 ->to($friend->id)
-                ->extra(compact($friendName))
+                ->extra(compact('friendName'))
                 ->url('http://localhost:8000')
                 ->send();
             return response()->json(["success" => 'Remove user from friends list']);
@@ -133,7 +134,7 @@ class ProfileController extends Controller{
             Notifynder::category('user.add_follower')
                 ->from($user->id)
                 ->to($followee->id)
-                ->extra(compact($friendName))
+                ->extra(compact('friendName'))
                 ->url('http://localhost:8000')
                 ->send();
             return response()->json(['success' => 'You are following this user']);
@@ -151,7 +152,7 @@ class ProfileController extends Controller{
             Notifynder::category('user.remove_follower')
                 ->from($user->id)
                 ->to($followee->id)
-                ->extra(compact($friendName))
+                ->extra(compact('friendName'))
                 ->url('http://localhost:8000')
                 ->send();
             return response()->json(['success' => "Remove from the user`s followers"]);

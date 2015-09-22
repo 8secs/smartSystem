@@ -9,14 +9,16 @@
 namespace Arangel\SmartAuth\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Config;
-use JWT;
+
 use Intervention\Image\Facades\Image;
-use Input;
-use Response;
+use Cmgmyr\Messenger\Models\Thread;
 use Arangel\SmartAuth\Http\Models\Role;
 use Arangel\SmartAdmin\Http\Models\User;
 use App\Http\Controllers\Controller;
+use Config;
+use JWT;
+use Input;
+use Response;
 
 class UserController extends Controller {
 
@@ -45,6 +47,8 @@ class UserController extends Controller {
         $roles = Role::all(['id', 'display_name']);
         $user->notifications = $user->getNotifications();
         $user->notificationsNotRead = $user->countNotificationsNotRead();
+        $threads = Thread::forUser($user->id)->latest('updated_at')->get();
+        $user->threads = $threads;
         return Response::json(['user' => $user, 'roles' => $roles]);
     }
     /**

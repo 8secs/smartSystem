@@ -1,34 +1,5 @@
 .tabs-content
-    .post
-        .user-block
-            img.img-circle.img-bordered-sm(check-image='', ng-src='images/user1-128x128.jpg', alt='user image')
-            span.username
-                a(href='#') Jonathan Burke Jr.
-                a.pull-right.btn-box-tool(href='#')
-                    i.fa.fa-times
-            span.description Shared publicly - 7:30 PM today
-        // /.user-block
-        p
-            | Lorem ipsum represents a long-held tradition for designers,
-            | typographers and the like. Some people hate it and argue for
-            | its demise, but others ignore the hate as they create awesome
-            | tools to help create filler text for everyone from bacon lovers
-            | to Charlie Sheen fans.
-        ul.list-inline
-            li
-                a.link-black.text-sm(href='#')
-                    i.fa.fa-share.margin-r-5
-                    |  Share
-            li
-                a.link-black.text-sm(href='#')
-                    i.fa.fa-thumbs-o-up.margin-r-5
-                    |  Like
-            li.pull-right
-                a.link-black.text-sm(href='#')
-                    i.fa.fa-comments-o.margin-r-5
-                    |  Comments (5)
-        input.form-control.input-sm(type='text', placeholder='Type a comment')
-        // /.post
+    .post(ng-repeat='thread in userProfile.user.threads')
         // Post
         .post.clearfix
             .user-block
@@ -52,47 +23,28 @@
                     .col-sm-3
                         button.btn.btn-danger.pull-right.btn-block.btn-sm Send
         // /.post
-        // Post
-        .post
-            .user-block
-                img.img-circle.img-bordered-sm(check-image='', ng-src='images/user6-128x128.jpg', alt='user image')
-                span.username
-                    a(href='#') Adam Jones
-                    a.pull-right.btn-box-tool(href='#')
-                        i.fa.fa-times
-                span.description Posted 5 photos - 5 days ago
-            // /.user-block
-            .row.margin-bottom
+    .new-post
+        form(method='post', ng-submit='addMessage(message)', name='messageForm', novalidate)
+            .form-group.has-feedback(ng-class="{ 'has-error' : message.subject.$invalid && !messageForm.subject.$pristine }")
+                input.form-control.input-lg(type='text', name='subject', ng-model='message.subject', placeholder='Subject', required='', autofocus='')
+                p.help-block(ng-show='message.subject.$invalid && !messageForm.subject.$pristine') Subject is required.
+            .form-group.has-feedback(ng-class="{ 'has-error' : message.message.$invalid && !messageForm.message.$pristine }")
+                textarea.form-control(type='text', name='message', ng-model='message.message', placeholder='Message', required='')
+                p.help-block(ng-show='message.message.$invalid && !messageForm.message.$pristine') Message is required.
+            .row
                 .col-sm-6
-                    img.img-responsive(check-image='', ng-src='images/photo1.png', alt='Photo')
-                // /.col
+                    .form-group.has-feedback
+                        label.control-label
+                            i.ion-person
+                            |  Friends
+                        br
+                        multiselect(ng-model='friends', options='f.displayName for f in friends', data-multiple='true', scroll-after-rows='5', data-compare-by='id')
                 .col-sm-6
-                    .row
-                        .col-sm-6
-                            img.img-responsive(check-image='', ng-src='images/photo2.png', alt='Photo')
-                            br
-                            img.img-responsive(check-image='', ng-src='images/photo3.jpg', alt='Photo')
-                        // /.col
-                        .col-sm-6
-                            img.img-responsive(check-image='', ng-src='images/photo4.jpg', alt='Photo')
-                            br
-                            img.img-responsive(check-image='', ng-src='images/photo1.png', alt='Photo')
-                        // /.col
-                    // /.row
-                // /.col
-            // /.row
-            ul.list-inline
-                li
-                    a.link-black.text-sm(href='#')
-                        i.fa.fa-share.margin-r-5
-                        |  Share
-                li
-                    a.link-black.text-sm(href='#')
-                        i.fa.fa-thumbs-o-up.margin-r-5
-                        |  Like
-                li.pull-right
-                    a.link-black.text-sm(href='#')
-                        i.fa.fa-comments-o.margin-r-5
-                        |  Comments (5)
-            input.form-control.input-sm(type='text', placeholder='Type a comment')
-        // /.post
+                    .form-group.has-feedback
+                        label.control-label
+                            i.ion-person
+                            |  Followers
+                        br
+                        multiselect(ng-model='followers', options='f.displayName for f in followers', data-multiple='true', scroll-after-rows='5', data-compare-by='id')
+            .form-group
+                button.btn.btn-primary(type='submit', ng-disabled='messageForm.$invalid') Send

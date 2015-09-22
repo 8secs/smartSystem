@@ -18,10 +18,10 @@ a.logo(href='/')
                     // Menu toggle button
                     a.dropdown-toggle(href='#', data-toggle='dropdown')
                         i.fa.fa-envelope-o
-                        span.label.label-success 4
+                        span.label.label-success {{userProfile.user.threads.length}}
                     ul.dropdown-menu
-                        li.header You have 4 messages
-                        li
+                        li.header You have {{userProfile.user.threads.length}} messages
+                        li(ng-repeat='thread in userProfile.user.threads')
                             // inner menu: contains the messages
                             ul.menu
                                 li
@@ -40,7 +40,7 @@ a.logo(href='/')
                                         p Why not buy a new awesome theme?
                                 // end message
                             // /.menu
-                        li.footer
+                        li.footer(ng-show='userProfile.user.threads.length > 0')
                             a(href='#') See All Messages
                 // /.messages-menu
                 // Notifications Menu
@@ -60,7 +60,7 @@ a.logo(href='/')
                                         i.fa.fa-users.text-aqua
                                         |  {{ notification.text }}
                                 // end notification
-                        li.footer(ng-show='userProfile.user.notifications')
+                        li.footer(ng-show='userProfile.user.notifications.length > 0')
                             a(href='#') View all
                 // Tasks Menu
                 li.dropdown.tasks-menu

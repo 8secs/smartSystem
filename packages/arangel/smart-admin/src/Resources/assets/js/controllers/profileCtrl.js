@@ -21,7 +21,7 @@
             $scope.panes = [
                 {title: "Settings", content: "themes/"+$rootScope.config.activeTheme+"/partials/profile/settings.html", active:true},
                 {title: "Timeline", content: "themes/"+$rootScope.config.activeTheme+"/partials/profile/timeline.html"},
-                {title: "Activity", content: "themes/"+$rootScope.config.activeTheme+"/partials/profile/activity.html"},
+                {title: "Messsages", content: "themes/"+$rootScope.config.activeTheme+"/partials/profile/activity.html"},
                 {title: "Acounts", content: "themes/"+$rootScope.config.activeTheme+"/partials/profile/accounts.html"}
             ];
 

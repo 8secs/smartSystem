@@ -10,10 +10,11 @@ namespace Arangel\SmartAdmin\Http\Models;
 
 
 use Fenos\Notifynder\Notifable;
+use Cmgmyr\Messenger\Traits\Messagable;
 
 class User extends \Arangel\SmartAuth\Http\Models\User {
 
-    use Notifable;
+    use Notifable, Messagable;
 
     /**
      *
