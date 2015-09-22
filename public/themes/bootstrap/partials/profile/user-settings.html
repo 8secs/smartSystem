@@ -1,0 +1,101 @@
+
+<div class="tabs-content">
+  <div class="clear">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <div class="box-title">
+          <h3>Basic Information</h3>
+        </div>
+        <div class="box-tools pull-right">
+          <button data-widget="collapse" data-toggle="tooltip" title="Collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+        </div>
+      </div>
+      <form method="post" ng-submit="updateUser(user)">
+        <div class="box-body">
+          <div style="padding: 20px;" class="row">
+            <div class="col-md-3 file-image"><img id="img" check-image="" ng-src="{{image}}" width="170" class="thumbnail"/></div>
+            <div id="file" file-dropzone="[image/png, image/jpeg, image/gif]" file="image" file-name="imageFileName" data-max-file-size="1" class="dropzone col-md-8"><i class="fa fa-upload"></i><span>Drop Profile Image Here</span></div>
+          </div>
+          <div class="form-group">
+            <label class="control-label"><i class="fa fa-user"></i> Display Name</label>
+            <input ng-if="editUser" type="text" ng-model="user.displayName" readonly="" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label class="control-label"><i class="fa fa-envelope"></i> Email Address</label>
+            <input ng-if="editUser" type="email" ng-model="user.email" readonly="" class="form-control"/>
+          </div>
+          <div ng-if="editUser" class="form-group">
+            <label class="control-label"><i class="fa fa-certificate"></i> Roles</label><br/>
+            <multiselect ng-model="user.roles" options="r.display_name for r in roles" data-multiple="true" scroll-after-rows="5" data-compare-by="id" change="selected()"></multiselect>
+          </div>
+        </div>
+        <div class="box-footer">
+          <div class="col-sm-6">
+            <button type="submit" class="btn btn-danger">Submit</button>
+          </div>
+          <div class="col-sm-6 pull-right">
+            <button type="button" ng-click="sendConfirmationEmail(user.id)" class="btn btn-warning">Send confirmation Email</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="clear"></div>
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <div class="box-title">
+          <h3>About {{user.display_name}}</h3>
+        </div>
+        <div class="box-tools pull-right">
+          <button data-widget="collapse" data-toggle="tooltip" title="Collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+        </div>
+      </div>
+      <form method="post">
+        <div class="box-body">
+          <input type="hidden" ng-model="user.profile.user_id" class="form-control"/>
+          <div class="form-group">
+            <label class="control-label"><i class="fa fa-cubes"></i> Job position</label>
+            <input ng-if="editUser" type="text" ng-model="user.profile.position" readonly="" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label class="control-label"><i class="fa fa-book"></i> Education</label>
+            <input ng-if="editUser" type="text" ng-model="user.profile.education" readonly="" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label class="control-label"><i class="fa fa-user"></i> About me</label>
+            <textarea ng-if="editUser" type="text" ng-model="user.profile.about_me" readonly="" class="form-control"></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="clear"></div>
+    <div class="box box-warning">
+      <div class="box-header with-border">
+        <div class="box-title">
+          <h3>Location</h3>
+        </div>
+        <div class="box-tools pull-right">
+          <button data-widget="collapse" data-toggle="tooltip" title="Collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <table show-filter="true" class="ui table">
+          <tbody>
+            <tr>
+              <th>Full Street</th>
+              <th>City</th>
+              <th>Post Code</th>
+              <th>Country</th>
+            </tr>
+          </tbody>
+          <tr ng-repeat="loc in user.locations">
+            <td data-title="'Full Street'">{{loc.address}}</td>
+            <td data-title="'City'">{{loc.city}}</td>
+            <td data-title="'Post Code'">{{loc.postCode}}</td>
+            <td data-title="'Country'">{{loc.country}}</td>
+          </tr>
+        </table>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</div>

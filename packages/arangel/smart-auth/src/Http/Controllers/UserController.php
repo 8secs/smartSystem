@@ -43,6 +43,8 @@ class UserController extends Controller {
         $user->profile = $user->profile;
         $user->locations = $user->locations;
         $roles = Role::all(['id', 'display_name']);
+        $user->notifications = $user->getNotifications();
+        $user->notificationsNotRead = $user->countNotificationsNotRead();
         return Response::json(['user' => $user, 'roles' => $roles]);
     }
     /**

@@ -48,19 +48,19 @@ a.logo(href='/')
                     // Menu toggle button
                     a.dropdown-toggle(href='#', data-toggle='dropdown')
                         i.fa.fa-bell-o
-                        span.label.label-warning 10
+                        span.label.label-warning {{userProfile.user.notificationsNotRead}}
                     ul.dropdown-menu
-                        li.header You have 10 notifications
+                        li.header You have {{userProfile.user.notifications.length}} notifications
                         li
                             // Inner Menu: contains the notifications
                             ul.menu
-                                li
+                                li(ng-repeat='notification in userProfile.user.notifications')
                                     // start notification
                                     a(href='#')
                                         i.fa.fa-users.text-aqua
-                                        |  5 new members joined today
+                                        |  {{ notification.text }}
                                 // end notification
-                        li.footer
+                        li.footer(ng-show='userProfile.user.notifications')
                             a(href='#') View all
                 // Tasks Menu
                 li.dropdown.tasks-menu

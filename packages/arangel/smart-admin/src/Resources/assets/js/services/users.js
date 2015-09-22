@@ -19,6 +19,9 @@
                 },
                 deleteUser: function(id){
                     return $http.post('api/dashboard/user/destroy-user', {id: id});
+                },
+                sendConfirmationEmail: function(id){
+                    return $http.get('api/dashboard/user/send-confirmation-email/'+id);
                 }
             };
 

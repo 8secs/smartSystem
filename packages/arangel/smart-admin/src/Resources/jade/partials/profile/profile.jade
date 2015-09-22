@@ -14,7 +14,7 @@ section.content-header
             li.active(ng-if='editUser') Edit user
         alert(ng-repeat='alert in alerts', type='{{alert.type}}', close='alert.close()') {{ alert.msg }}
     // Main content
-    section.content
+    section.content(ng-show='!editUser')
         .row
             .col-md-3
                 // Profile Image
@@ -83,3 +83,69 @@ section.content-header
             // /.col
         // /.row
     // /.content
+
+    section.content(ng-show='editUser')
+        .row
+            .col-md-3
+                // Profile Image
+                .box.box-primary
+                    .box-body.box-profile
+                        img.profile-user-img.img-responsive.img-circle(src='{{image}}', alt='User profile picture')
+                        h3.profile-username.text-center {{user.displayName}}
+                        p.text-muted.text-center {{user.about.position}}
+                        ul.list-group.list-group-unbordered
+                            li.list-group-item
+                                b Followers
+                                a.pull-right {{num_followers}}
+                            li.list-group-item
+                                b Following
+                                a.pull-right {{num_followees}}
+                            li.list-group-item
+                                b Friends
+                                a.pull-right {{num_friends}}
+                        a.btn.btn-primary.btn-block(href='#')
+                            b Follow
+                    // /.box-body
+                // /.box
+                // About Me Box
+                .box.box-primary
+                    .box-header.with-border
+                        h3.box-title(ng-if='editUser')
+                            | About&nbsp;
+                            strong {{user.displayName}}
+                    // /.box-header
+                    .box-body
+                        strong
+                            i.fa.fa-book.margin-r-5
+                            |   Education
+                        p.text-muted
+                            | {{user.about.education}}
+                            // B.S. in Computer Science from the University of Tennessee at Knoxville
+                        hr
+                        strong
+                            i.fa.fa-map-marker.margin-r-5
+                            |  Location
+                        p.text-muted {{user.locations[0].formattedAddress}}
+                        hr
+                        strong
+                            i.fa.fa-pencil.margin-r-5
+                            |  Skills
+                        p
+                            span.label.label-danger UI Design
+                            span.label.label-success Coding
+                            span.label.label-info Javascript
+                            span.label.label-warning PHP
+                            span.label.label-primary Node.js
+                        hr
+                        strong
+                            i.fa.fa-file-text-o.margin-r-5
+                            |  Notes
+                        p {{user.about.about_me}}
+                    // /.box-body
+                // /.box
+            // /.col
+            .col-md-9
+                .nav-tabs-custom
+                    tabset
+                        tab(active='pane.active', heading='{{pane.title}}', ng-repeat='pane in panes')
+                            div(ng-include='pane.content')

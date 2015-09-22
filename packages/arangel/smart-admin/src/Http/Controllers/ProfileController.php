@@ -15,6 +15,9 @@ use Arangel\SmartAdmin\Http\Models\Location;
 use Arangel\SmartAdmin\Http\Models\User;
 use Arangel\SmartAdmin\Http\Models\Profile;
 
+use Notifynder;
+use Response;
+
 class ProfileController extends Controller{
 
     public function storeProfile(Request $request){
@@ -68,22 +71,48 @@ class ProfileController extends Controller{
     public function addFriend(Request $request){
         $friend = User::find($request->input("id"));
         $user = User::find($request['user']['sub']);
-        if($user->addFriend($friend)) return reponse()->json(["success" => 'Add user to friend list']);
-        else return response()->json(["error" => "Cannot add Friend to list"]);
+        $friendName = $user->displayName;
+        if($user->addFriend($friend)) {
+            return response()->json(["error" => "Cannot add Friend to list"]);
+        }
+        else {
+            Notifynder::category('user.add_friend')
+                ->from($user->id)
+                ->to($friend->id)
+                ->extra(compact($friendName))
+                ->url('http://localhost:8000')
+                ->send();
+            return response()->json(["success" => 'Add user to friend list']);
+        }
     }
 
     public function removeFriend(Request $request){
         $friend = User::find($request->input("id"));
         $user = User::find($request['user']['sub']);
-        if($user->removeFriend($friend)) return reponse()->json(["success" => 'Remove user from friends list']);
-        else return response()->json(["error" => "Cannot remove Friend from list"]);
+        if($user->removeFriend($friend)) {
+            return response()->json(["error" => "Cannot remove Friend from list"]);
+        }
+        else {
+            $friendName = $user->displayName;
+            Notifynder::category('user.remove_friend')
+                ->from($user->id)
+                ->to($friend->id)
+                ->extra(compact($friendName))
+                ->url('http://localhost:8000')
+                ->send();
+            return response()->json(["success" => 'Remove user from friends list']);
+        }
     }
 
     public function addFollower(Request $request){
         $friend = User::find($request->input("id"));
         $user = User::find($request['user']['sub']);
-        if($user->addFollower($friend)) return reponse()->json(["success" => 'Add user to Follower list']);
-        else return response()->json(["error" => "Cannot add Follower to list"]);
+        if($user->addFollower($friend)) {
+            return response()->json(["error" => "Cannot add Follower to list"]);
+        }
+        else {
+            return reponse()->json(["success" => 'Add user to Follower list']);
+        }
     }
 
     public function removeFollower(Request $request){
@@ -96,15 +125,37 @@ class ProfileController extends Controller{
     public function addFollowee(Request $request){
         $followee = User::find($request->input('id'));
         $user = User::find($request['user']['sub']);
-        if($user->addFollowee($followee)) return response()->json(['success' => 'You are following this user']);
-        else return response()->json(['error' => "Cannot add you to the user's followers"]);
+        if($user->addFollowee($followee)) {
+            return response()->json(['error' => "Cannot add you to the user's followers"]);
+        }
+        else {
+            $friendName = $user->displayName;
+            Notifynder::category('user.add_follower')
+                ->from($user->id)
+                ->to($followee->id)
+                ->extra(compact($friendName))
+                ->url('http://localhost:8000')
+                ->send();
+            return response()->json(['success' => 'You are following this user']);
+        }
     }
 
     public function removeFollowee(Request $request){
         $followee = User::find($request->input('id'));
         $user = User::find($request['user']['sub']);
-        if($user->removeFollowee($followee)) return response()->json(['success' => "Remove from the user`s followers"]);
-        else return response()->json(['error' => "Connot remove from user's followers"]);
+        if($user->removeFollowee($followee)) {
+            return response()->json(['error' => "Connot remove from user's followers"]);
+        }
+        else {
+            $friendName = $user->displayName;
+            Notifynder::category('user.remove_follower')
+                ->from($user->id)
+                ->to($followee->id)
+                ->extra(compact($friendName))
+                ->url('http://localhost:8000')
+                ->send();
+            return response()->json(['success' => "Remove from the user`s followers"]);
+        }
     }
 
     public function storeLocation(Request $request){

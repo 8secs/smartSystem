@@ -15,7 +15,7 @@
                                                  ngTableParams){
 
             $scope.panes = [
-                {title: "Settings", content: "themes/"+$rootScope.config.activeTheme+"/partials/profile/settings.html", active:true}
+                {title: "Settings", content: "themes/"+$rootScope.config.activeTheme+"/partials/profile/user-settings.html", active:true}
             ];
 
             $scope.alerts = alertService.get();
@@ -65,11 +65,14 @@
                 $scope.editUser = true;
                 User.getUser(id)
                     .success(function(data){
+
                         $scope.user = data.user;
                         $scope.image = 'uploads/'+data.user.image;
                         $scope.roles = data.roles;
                         $scope.user.roles = data.user.roles;
-
+                        $scope.num_friends = data.user.friends.length;
+                        $scope.num_followers = data.user.followers.length;
+                        $scope.num_followees = data.user.following.length;
                         $scope.roleSearchSettings = {enableSearch: true};
                     })
                     .error(function(error) {
@@ -77,6 +80,16 @@
                     })
                     .then(function() {
                         alertService.add('success', "Data has been received.");
+                    });
+            }
+
+            $scope.sendConfirmationEmail = function(id){
+                User.sendConfirmationEmail(id)
+                    .success(function(data){
+                        alertService.add('success', data.message);
+                    })
+                    .error(function(error){
+                        alertService.add('error', error.message);
                     });
             }
 

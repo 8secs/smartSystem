@@ -109,7 +109,6 @@
                         });
 
              $scope.init = function(){
-                            $log.log("initAdmin");
                             $scope.getUserLocationByIp();
                             $scope.getUser();
                             $scope.getFriends();

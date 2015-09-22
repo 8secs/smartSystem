@@ -17,6 +17,7 @@ use Arangel\SmartAdmin\Http\Models\User;
 use Arangel\SmartAdmin\Http\Models\Location;
 use Arangel\SmartAdmin\Http\Models\Profile;
 use Response;
+use Mail;
 
 class AdminController extends Controller {
 
@@ -61,8 +62,24 @@ class AdminController extends Controller {
         $roles = Role::all(['id', 'display_name']);
         $user->profile = $user->profile;
         $user->locations = $user->locations;
-
+        $user->friends = $user->friends;
+        $user->followers = $user->followers;
+        $user->following = $user->following;
+        $user->notificationsNotRead = $user->countNotificationsNotRead();
         return Response::json(['user' => $user, 'roles' => $roles]);
+    }
+
+    public function sendConfirmationEmailUser($id){
+        $user = User::find($id);
+        $user_arr = $user->toArray();
+
+        Mail::send("emails.welcome", $user_arr, function($message) use ($user_arr) {
+            $message->from('no-reply@art.com', "Site Name");
+            $message->subject('Welcome to site name');
+            $message->to($user_arr['email']);
+        });
+
+        return response()->json(["message" => 'We have sent a confirmation email to your email. Please check your inbox']);
     }
 
     /**

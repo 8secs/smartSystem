@@ -3,7 +3,6 @@
 
     adminModule
         .directive('adminLteLayout', function(){
-            console.log("adminLteLayout");
             return {
                 restrict: 'A',
                 link: link

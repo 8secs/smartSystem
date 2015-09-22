@@ -3,7 +3,6 @@
 
     adminModule
         .directive('adminLteControlSidebar', function(){
-            console.log("adminLteControlSidebar");
             return {
                 restrict: 'A',
                 link: link

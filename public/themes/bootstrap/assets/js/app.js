@@ -49,19 +49,17 @@
                 })
                 .state('admin',{
                     abstract: true,
-                    /*resolve: {
+                    resolve: {
                         authenticated: function($q, $location, $auth) {
                             var deferred = $q.defer();
                             if (!$auth.isAuthenticated()) {
-                                //$location.path('/login');
-                                console.log("noAuth");
+                                $location.path('/login');
                             } else {
-                                console.log("Auth");
                                 deferred.resolve();
                             }
                             return deferred.promise;
                         }
-                    },*/
+                    },
                     views: {
                         '@' : {
                             templateUrl: 'themes/bootstrap/layouts/admin.html'

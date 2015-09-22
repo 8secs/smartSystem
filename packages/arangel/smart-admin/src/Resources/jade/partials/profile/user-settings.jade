@@ -1,0 +1,86 @@
+.tabs-content
+    .clear
+        .box.box-primary
+            .box-header.with-border
+                .box-title
+                    h3 Basic Information
+                .box-tools.pull-right
+                    button.btn.btn-box-tool(data-widget='collapse', data-toggle='tooltip', title='Collapse')
+                        i.fa.fa-minus
+            form(method='post', ng-submit='updateUser(user)')
+                .box-body
+                    .row(style='padding: 20px;')
+                        .col-md-3.file-image
+                            img#img.thumbnail(check-image='', ng-src='{{image}}', width='170')
+                        #file.dropzone.col-md-8(file-dropzone='[image/png, image/jpeg, image/gif]', file='image', file-name='imageFileName', data-max-file-size='1')
+                            i.fa.fa-upload
+                            span Drop Profile Image Here
+                    .form-group
+                        label.control-label
+                            i.fa.fa-user
+                            |  Display Name
+                        input.form-control(ng-if='editUser', type='text', ng-model='user.displayName', readonly='')
+                    .form-group
+                        label.control-label
+                            i.fa.fa-envelope
+                            |  Email Address
+                        input.form-control(ng-if='editUser', type='email', ng-model='user.email', readonly='')
+                    .form-group(ng-if='editUser')
+                        label.control-label
+                            i.fa.fa-certificate
+                            |  Roles
+                        br
+                        multiselect(ng-model='user.roles', options='r.display_name for r in roles', data-multiple='true', scroll-after-rows='5', data-compare-by='id', change='selected()')
+                .box-footer
+                    .col-sm-6
+                        button.btn.btn-danger(type='submit') Submit
+                    .col-sm-6.pull-right
+                        button.btn.btn-warning(type='button', ng-click='sendConfirmationEmail(user.id)') Send confirmation Email
+        .clear
+        .box.box-info
+            .box-header.with-border
+                .box-title
+                    h3 About {{user.display_name}}
+                .box-tools.pull-right
+                    button.btn.btn-box-tool(data-widget='collapse', data-toggle='tooltip', title='Collapse')
+                        i.fa.fa-minus
+            form(method='post')
+                .box-body
+                    input.form-control(type='hidden', ng-model='user.profile.user_id')
+                    .form-group
+                        label.control-label
+                            i.fa.fa-cubes
+                            |  Job position
+                        input.form-control(ng-if='editUser', type='text', ng-model='user.profile.position', readonly='')
+                    .form-group
+                        label.control-label
+                            i.fa.fa-book
+                            |  Education
+                        input.form-control(ng-if='editUser', type='text', ng-model='user.profile.education', readonly='')
+                    .form-group
+                        label.control-label
+                            i.fa.fa-user
+                            |  About me
+                        textarea.form-control(ng-if='editUser', type='text', ng-model='user.profile.about_me', readonly='')
+        .clear
+        .box.box-warning
+            .box-header.with-border
+                .box-title
+                    h3 Location
+                .box-tools.pull-right
+                    button.btn.btn-box-tool(data-widget='collapse', data-toggle='tooltip', title='Collapse')
+                        i.fa.fa-minus
+            .box-body
+                table.ui.table(show-filter='true')
+                    tbody
+                        tr
+                            th Full Street
+                            th City
+                            th Post Code
+                            th Country
+                    tr(ng-repeat='loc in user.locations')
+                        td(data-title="'Full Street'") {{loc.address}}
+                        td(data-title="'City'") {{loc.city}}
+                        td(data-title="'Post Code'") {{loc.postCode}}
+                        td(data-title="'Country'") {{loc.country}}
+                .clear

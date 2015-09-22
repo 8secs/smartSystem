@@ -9,7 +9,11 @@
 namespace Arangel\SmartAdmin\Http\Models;
 
 
+use Fenos\Notifynder\Notifable;
+
 class User extends \Arangel\SmartAuth\Http\Models\User {
+
+    use Notifable;
 
     /**
      *
